@@ -1,13 +1,15 @@
 import './App.css'
 import './output.css'
+import Home from './components/home.jsx';
 
 function App() {
   console.log(`test`)
 
   return (
-    <h1>
-      Hello world!
-    </h1>
+    <>
+    <Home/>
+    </>
+
   )
 }
 
