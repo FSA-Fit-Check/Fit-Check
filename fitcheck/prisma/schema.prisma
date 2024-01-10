@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clothing_Item {
+  id                    Int      @id @default(autoincrement())
+  user_id               Int?     @unique
+  garment_type          String
+  weather_compatability String   
+  occasion              String
+  style_type            String
+  color                 String
+  img_url               String
+  Description           String
+}
+
+model User_Preferences {
+  id                    Int      @id @default(autoincrement())
+  username              String?  @unique
+  password              String?
+  email                 String?   
+  occasion              String?
+  style_type            String?
+  color                 String?
+  img_url               String?
+  Description           String?
+  forMen                Boolean?
+}
+
+model Outfit {
+  id                    Int      @id @default(autoincrement())
+  user_id               Int?     @unique
+  name                  String
+  weather_compatability String     @default(USER)
+  occasion              String
+  style_type            String
+  color                 String
+  img_url               String
+  forMen                Boolean
+}
+
