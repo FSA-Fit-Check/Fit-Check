@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 
 
-const seedDb = () {
+const seedDatabase = async() => {
   
   const UserPreferences1 = await prisma.UserPreferences.create({
     data: {
