@@ -12,41 +12,50 @@ datasource db {
 
 model Clothing_Item {
   id                    Int                    @id @default(autoincrement())
-  user_id               Int?     
-  garment_type          String   
-  weather_compatability String   
+  user_id               Int?
+  garment_type          String
+  weather_compatability String
   occasion              String
   style_type            String
   color                 String
   img_url               String
   description           String
   user_preferences      User_Preferences?      @relation(fields: [user_id], references: [id])
+  Outfit_Clothing_item  Outfit_Clothing_item[]
 }
 
 model User_Preferences {
-  id                    Int                    @id @default(autoincrement())
-  username              String                 @unique
-  password              String
-  email                 String   
-  occasion              String
-  style_type            String
-  color                 String
-  description           String
-  forMen                Boolean
-  clothing_items        Clothing_Item[]
-  outfits               Outfit[]
+  id             Int             @id @default(autoincrement())
+  username       String          @unique
+  password       String
+  email          String
+  occasion       String
+  style_type     String
+  color          String
+  description    String
+  forMen         Boolean
+  clothing_items Clothing_Item[]
+  outfits        Outfit[]
 }
 
 model Outfit {
   id                    Int                    @id @default(autoincrement())
   user_id               Int?                   @unique
   name                  String
-  weather_compatability String   
+  weather_compatability String
   occasion              String
   style_type            String
   color                 String
   img_url               String
   forMen                Boolean
-  user_preferences     User_Preferences?     @relation(fields: [user_id], references: [id])
+  user_preferences      User_Preferences?      @relation(fields: [user_id], references: [id])
+  Outfit_Clothing_item  Outfit_Clothing_item[]
 }
 
+model Outfit_Clothing_item {
+  id            Int           @id @default(autoincrement())
+  outfit_id     Int
+  outfit        Outfit        @relation(fields: [outfit_id], references: [id])
+  clothing_id   Int
+  clothing_item Clothing_Item @relation(fields: [clothing_id], references: [id])
+}
