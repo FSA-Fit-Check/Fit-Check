@@ -11,39 +11,43 @@ datasource db {
 }
 
 model Clothing_Item {
-  id                    Int      @id @default(autoincrement())
-  user_id               Int?     @unique
-  garment_type          String
+  id                    Int                    @id @default(autoincrement())
+  user_id               Int?     
+  garment_type          String   
   weather_compatability String   
   occasion              String
   style_type            String
   color                 String
   img_url               String
   Description           String
+  user_preferences      User_Preferences?      @relation(fields: [user_id], references: [id])
 }
 
 model User_Preferences {
-  id                    Int      @id @default(autoincrement())
-  username              String?  @unique
-  password              String?
-  email                 String?   
-  occasion              String?
-  style_type            String?
-  color                 String?
-  img_url               String?
-  Description           String?
-  forMen                Boolean?
+  id                    Int                    @id @default(autoincrement())
+  username              String                 @unique
+  password              String
+  email                 String   
+  occasion              String
+  style_type            String
+  color                 String
+  img_url               String
+  Description           String
+  forMen                Boolean
+  clothing_items        Clothing_Item[]
+  outfits               Outfit[]
 }
 
 model Outfit {
-  id                    Int      @id @default(autoincrement())
-  user_id               Int?     @unique
+  id                    Int                    @id @default(autoincrement())
+  user_id               Int?                   @unique
   name                  String
-  weather_compatability String     @default(USER)
+  weather_compatability String   
   occasion              String
   style_type            String
   color                 String
   img_url               String
   forMen                Boolean
+   user_preferences      User_Preferences?     @relation(fields: [user_id], references: [id])
 }
 
