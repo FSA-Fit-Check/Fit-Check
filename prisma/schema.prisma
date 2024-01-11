@@ -19,7 +19,7 @@ model Clothing_Item {
   style_type            String
   color                 String
   img_url               String
-  Description           String
+  description           String
   user_preferences      User_Preferences?      @relation(fields: [user_id], references: [id])
 }
 
@@ -31,8 +31,7 @@ model User_Preferences {
   occasion              String
   style_type            String
   color                 String
-  img_url               String
-  Description           String
+  description           String
   forMen                Boolean
   clothing_items        Clothing_Item[]
   outfits               Outfit[]
@@ -48,6 +47,6 @@ model Outfit {
   color                 String
   img_url               String
   forMen                Boolean
-   user_preferences      User_Preferences?     @relation(fields: [user_id], references: [id])
+  user_preferences     User_Preferences?     @relation(fields: [user_id], references: [id])
 }
 
