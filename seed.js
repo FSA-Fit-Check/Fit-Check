@@ -2,10 +2,10 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// Perform database seeding operations using prisma
+
 
 const seedDb = () {
-  // Example seeding logic for User_Preferences and Outfit models
+  
   const UserPreferences1 = await prisma.UserPreferences.create({
     data: {
       username:     'mo_mo',
@@ -13,7 +13,7 @@ const seedDb = () {
       email:        'momo3@gmail.com',
       occasion:     'casual',
       style_type:   'gothic',
-      forMen:       false,
+      forMen:        false,
       color:        'black'
     },
   });
@@ -96,20 +96,7 @@ const seedDb = () {
     },
   });
 
-  const Clothing_Item4 = await prisma.Clothing_Item.create({
-    data: {
-      user_id: userPreferences.id,
-      occasion:                 'casual',
-      style_type:               'streetwear',
-      forMen:                    true,
-      garment_type:             'jacket',
-      color:                    'blue',
-      weather_compatability:    'winter',
-      img_url:                  'https://imgur.com/zGZwsdb.png',
-      description:              'Blue puffer jacket.'
-    },
-  });
-
+  
   const Clothing_Item5 = await prisma.Clothing_Item.create({
     data: {
       user_id: userPreferences.id,
@@ -137,6 +124,8 @@ const seedDb = () {
       description:              'charcoal gray workforce trousers'
     },
   });
+
+                    // women's bottoms
 
   const Clothing_Item7 = await prisma.Clothing_Item.create({
     data: {
@@ -179,6 +168,7 @@ const seedDb = () {
       description:              'Ripped blue jeans.'
     },
   });
+                // women's blouses
 
   const Clothing_Item10= await prisma.Clothing_Item.create({
     data: {
@@ -237,6 +227,8 @@ const seedDb = () {
     },
   });
 
+                // men's shirts
+
   const Clothing_Item14= await prisma.Clothing_Item.create({
     data: {
       user_id: userPreferences.id,
@@ -290,6 +282,66 @@ const seedDb = () {
       weather_compatability:    'fall',
       img_url:                  'https://imgur.com/Cv4qT8B.png',
       description:              'red plaid flannel shirt.'
+    },
+  });
+                    // men's outterwear
+
+  const Clothing_Item4 = await prisma.Clothing_Item.create({
+    data: {
+      user_id: userPreferences.id,
+      occasion:                 'casual',
+      style_type:               'streetwear',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'blue',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/zGZwsdb.png',
+      description:              'Blue puffer jacket.'
+    },
+  });
+
+
+  const Clothing_Item18= await prisma.Clothing_Item.create({
+    data: {
+      user_id: userPreferences.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'red',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/nCBMm36.png',
+      description:              'red mid-weight windbreaker with black fleece lining.'
+    },
+  });
+
+  const Clothing_Item19= await prisma.Clothing_Item.create({
+    data: {
+      user_id: userPreferences.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'black',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/vpcJkXq.png',
+      description:              'black NorthFace puffer jacket.'
+    },
+  });
+
+                // women's outterwear
+
+  const Clothing_Item20= await prisma.Clothing_Item.create({
+    data: {
+      user_id: userPreferences.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    false,
+      garment_type:             'jacket',
+      color:                    'pink',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/miJ2oz4.png',
+      description:              'light pink jacket with faux-fur hood.'
     },
   });
 
