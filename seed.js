@@ -2,8 +2,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-
-
 const seedDb = async () => {
   try {
   const user1 = await prisma.user.create({
