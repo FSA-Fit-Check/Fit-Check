@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "seed": "npx prisma migrate reset && node seed.js ",
     "dev": "vite",
     "build": "vite build",
     "build-tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css",
