@@ -4,6 +4,7 @@ const Profile = () => {
 
     return (
         <div> 
+            {/* display username here */}
             <h1>Hello, User! </h1>
             <br />
             

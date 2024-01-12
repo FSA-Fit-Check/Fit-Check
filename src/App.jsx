@@ -5,8 +5,7 @@ import Home from './components/home.jsx';
 import Registration from './components/registration.jsx';
 import Login from './components/login.jsx';
 import Navbar from './components/navbar.jsx';
-import {Router, Routes, Route} from 'react-router-dom';
-import UserPrefForm from './components/userPreferences.jsx';
+import {Router, Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
       </Routes>
       <br />
       <br />
-      < UserPrefForm />
     </>
   );
 }
