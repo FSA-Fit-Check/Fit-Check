@@ -10,7 +10,7 @@ import UserPrefForm from './components/userPreferences.jsx';
 
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ function App() {
       <br />
       <br />
       < UserPrefForm />
-    </Router>
+    </>
   );
 }
 
