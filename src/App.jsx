@@ -5,7 +5,8 @@ import Home from './components/home.jsx';
 import Registration from './components/registration.jsx';
 import Login from './components/login.jsx';
 import Navbar from './components/navbar.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Router, Routes, Route} from 'react-router-dom';
+import UserPrefForm from './components/userPreferences.jsx';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
       </Routes>
+      <br />
+      <br />
+      < UserPrefForm />
     </Router>
   );
 }
