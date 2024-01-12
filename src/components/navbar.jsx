@@ -11,7 +11,7 @@ const Navbar = () => {
     rounded-br-full rounded-tl-full 
     flex flex-row justify-center content-center gap-2 
     underline italic'>
-      <Link to="/home" className='hover:animate-pulse'>Home</Link>
+      <Link to="/" className='hover:animate-pulse'>Home</Link>
       <Link to="/login" className='hover:animate-pulse'>Login</Link>
       <Link to="/registration" className='hover:animate-pulse'>Registration</Link>
     </nav>
