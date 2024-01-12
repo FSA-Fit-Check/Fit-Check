@@ -9,7 +9,9 @@ const UserPrefForm = () => {
           <br />
           <form>
             <label>
-                Username: 
+                {/* make username, email and pword nullable for non-registered users to 
+                be able to submit the form without login credentials ??  */}
+                Username:                           
                 <input type="text" name="name"/>
             </label>
             <br/>
