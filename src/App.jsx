@@ -5,6 +5,7 @@ import Registration from './components/registration.jsx';
 import Login from './components/login.jsx';
 import Navbar from './components/navbar.jsx';
 import {Routes, Route} from 'react-router-dom';
+import UserPrefForm from './components/userPreferences.jsx';
 
 function App() {
   console.log(`test`)
@@ -23,6 +24,9 @@ function App() {
           <Registration/>
         } />
       </Routes>
+      <br />
+      <br />
+      < UserPrefForm />
     </>
   )
 }
