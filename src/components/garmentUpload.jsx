@@ -42,7 +42,7 @@ const GarmentUploadForm = () => {
             <br />
             <button type="submit">Upload</button>
             </form>
-        </div>
+        </div> 
     )
 }
 
