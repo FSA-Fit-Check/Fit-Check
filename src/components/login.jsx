@@ -4,12 +4,10 @@ import '../output.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [responseMessage, setResponseMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('Username:', username);
-    console.log('Password:', password);
 
     try {
       const response = await fetch('http://localhost:3000/login', {
@@ -26,13 +24,14 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        console.log('Login successful');
+        setResponseMessage(`Login successful!`);
         // Perform any actions for successful login, e.g., redirect to another page
       } else {
-        console.log('Login failed. Invalid credentials');
+        setResponseMessage(`Login failed. Invalid credentials.`);
         // Handle unsuccessful login, e.g., show an error message
       }
     } catch (error) {
+      setResponseMessage(`Error during login: ${error}`);
       console.error('Error during login:', error);
       // Handle other errors, e.g., network issues
     }
@@ -62,10 +61,13 @@ const Login = () => {
             className='rounded-md bg-verydarkgray text-whitecream'
           />
         </label>
+
         <button type="submit" className="rounded-md bg-gray text-whitecream">
-          Submit
+          Login
         </button>
       </form>
+
+      {responseMessage && <p>{responseMessage}</p>}
     </div>
   );
 };

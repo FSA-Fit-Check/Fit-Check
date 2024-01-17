@@ -20,16 +20,18 @@ router.post('/', async(req, res) => {
       }
     })
     if (userAlreadyExists) {
-      res.send("Username already exists. It needs to be unique!");
-      return;
+      throw new Error("Username already exists. It needs to be unique!");
     }
 
-    // Username and password have minimum length requirement.
+    // Username, email, and password have minimum length requirement.
     if (username.length < MIN_CHARACTER_COUNT) {
       throw new Error(`Username needs to be at least ${MIN_CHARACTER_COUNT} characters long.`);
     }
     if (password.length < MIN_CHARACTER_COUNT) {
       throw new Error(`Password needs to be at least ${MIN_CHARACTER_COUNT} characters long.`);
+    }
+    if (email.length < MIN_CHARACTER_COUNT) {
+      throw new Error(`Email needs to be at least ${MIN_CHARACTER_COUNT} characters long.`);
     }
 
     // Password is hashed with bcrypt.
