@@ -17,7 +17,6 @@ function App() {
         <Route path="/registration" element={<Registration />} />
       </Routes>
       <br />
-      <br />
     </>
   );
 }
