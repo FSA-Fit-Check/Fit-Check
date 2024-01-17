@@ -7,6 +7,8 @@ import Login from './components/login.jsx';
 import Navbar from './components/navbar.jsx';
 import {Router, Routes, Route} from 'react-router-dom'
 import Profile from './components/profile.jsx';
+import Outfit from './components/outfit.jsx';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/outfit" element={<Outfit />} />
 
       </Routes>
       <br />

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const loginRoute = require('./api/login.cjs');
 const registerRoute = require('./api/register.cjs');
+const outfitRoute = require('./api/outfit.cjs');
 const cors = require('cors');
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use('/login', loginRoute)
 app.use('/register', registerRoute)
+app.use('/outfit', outfitRoute)
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
