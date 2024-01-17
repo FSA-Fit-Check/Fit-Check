@@ -1,20 +1,7 @@
-import React, { useState } from 'react';
-import UserPrefForm from './userPreferences.jsx';
-import fetchWeatherData from '/Users/dhoffman/Desktop/FSACourseWork/unit_5/Fit-Check/api/weather.cjs';
+import React from 'react';
+import UserPrefForm from './userPreferences';
 
 const Home = () => {
-  const [weatherData, setWeatherData] = useState(null);
-
-  const handleWeatherButtonClick = async () => {
-    try {
-      const data = await fetchWeatherData();
-      console.log('Weather API Response:', data); // Log the successful response
-      setWeatherData(data);
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
-    }
-  };
-
   return (
     <>
       <div>
@@ -22,7 +9,7 @@ const Home = () => {
         <p>This is the homepage content.</p>
         <div className='containerOne'>
           <p>Weather Content</p><br/>
-          <button onClick={handleWeatherButtonClick}>
+          <button>
             Check the Weather!
           </button>
         </div>
@@ -33,4 +20,3 @@ const Home = () => {
 };
 
 export default Home;
-
