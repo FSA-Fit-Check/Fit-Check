@@ -14,6 +14,7 @@ const Navbar = () => {
       <Link to="/" className='hover:animate-pulse'>Home</Link>
       <Link to="/login" className='hover:animate-pulse'>Login</Link>
       <Link to="/registration" className='hover:animate-pulse'>Registration</Link>
+      <Link to="/profile" className='hover:animate-pulse'>Profile</Link>
     </nav>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPrefForm from './userPreferences.jsx';
+import UserPrefForm from './userPreferences';
 
 const Home = () => {
   return (
@@ -8,6 +8,7 @@ const Home = () => {
       <p>This is the homepage content.</p>
       < UserPrefForm />
     </div>
+
   );
 };
 
