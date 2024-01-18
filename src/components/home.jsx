@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserPrefForm from './userPreferences';
+import GarmentGallery from './garmentGallery';
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -27,6 +28,7 @@ const Home = () => {
   };
 
   return (
+
     <>
       <div>
         <h1>Welcome to the Home Page</h1>
@@ -41,12 +43,19 @@ const Home = () => {
           )}
           <br/>
           <button onClick={handleWeatherButtonClick}>
+
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <p>This is the homepage content.</p>
+      < GarmentGallery />
+      <div className='containerOne'>
+          <p>Weather Content</p><br/>
+          <button>
             Check the Weather!
           </button>
         </div>
-        <UserPrefForm />
-      </div>
-    </>
+      < UserPrefForm />
+    </div>
   );
 };
 
