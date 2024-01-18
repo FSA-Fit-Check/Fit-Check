@@ -33,17 +33,17 @@ const seedDb = async () => {
     },
   });
 
-  const Outfit = await prisma.outfit.create({
-    data: {
-      user_id: user2.id,
-      name:                     'goth fit',
-      occasion:                 'casual',
-      style_type:               'gothic',
-      forMen:                    false,
-      color:                    'black',
-      weather_compatability:    'winter'     
-    },
-  });
+  // const Outfit = await prisma.outfit.create({
+  //   data: {
+  //     user_id: user2.id,
+  //     name:                     'goth fit',
+  //     occasion:                 'casual',
+  //     style_type:               'gothic',
+  //     forMen:                    false,
+  //     color:                    'black',
+  //     weather_compatability:    'winter'     
+  //   },
+  // });
 
   const Clothing_Item1 = await prisma.clothing_Item.create({
     data: {
