@@ -33,17 +33,17 @@ const seedDb = async () => {
     },
   });
 
-//   const Outfit = await prisma.Outfit.create({
-//     data: {
-//       user_id: userPreferences1.id,
-//       name:                     'goth fit',
-//       occasion:                 'casual',
-//       style_type:               'gothic',
-//       forMen:                    false,
-//       color:                    'black',
-//       weather_compatability:    'winter'     
-//     },
-//   });
+  const Outfit = await prisma.outfit.create({
+    data: {
+      user_id: user2.id,
+      name:                     'goth fit',
+      occasion:                 'casual',
+      style_type:               'gothic',
+      forMen:                    false,
+      color:                    'black',
+      weather_compatability:    'winter'     
+    },
+  });
 
   const Clothing_Item1 = await prisma.clothing_Item.create({
     data: {
@@ -88,19 +88,19 @@ const seedDb = async () => {
   });
 
   
-//   const Clothing_Item5 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'streetwear',
-//       forMen:                    true,
-//       garment_type:             'pants',
-//       color:                    'blue',
-//       weather_compatability:    'winter',
-//       img_url:                  'https://imgur.com/Sc7lx48.png',
-//       description:              'multipocket cargo blue-jeans.'
-//     },
-//   });
+  const Clothing_Item5 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'streetwear',
+      forMen:                    true,
+      garment_type:             'pants',
+      color:                    'blue',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/Sc7lx48.png',
+      description:              'multipocket cargo blue-jeans.'
+    },
+  });
 
   const Clothing_Item6 = await prisma.clothing_Item.create({
     data: {
@@ -118,33 +118,33 @@ const seedDb = async () => {
 
 //                     // women's bottoms
 
-//   const Clothing_Item7 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'athleisure',
-//       forMen:                    false,
-//       garment_type:             'leggings',
-//       color:                    'muave',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/scurolo.png',
-//       description:              'muave leggings.'
-//     },
-//   });
+  const Clothing_Item7 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'casual',
+      style_type:               'athleisure',
+      forMen:                    false,
+      garment_type:             'leggings',
+      color:                    'muave',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/scurolo.png',
+      description:              'muave leggings.'
+    },
+  });
 
-//   const Clothing_Item8 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'athleisure',
-//       forMen:                    false,
-//       garment_type:             'sweatpants',
-//       color:                    'light-gray',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/R1Tdhk5.png',
-//       description:              'light-gray tapered sweatpants.'
-//     },
-//   });
+  const Clothing_Item8 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'casual',
+      style_type:               'athleisure',
+      forMen:                    false,
+      garment_type:             'sweatpants',
+      color:                    'light-gray',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/R1Tdhk5.png',
+      description:              'light-gray tapered sweatpants.'
+    },
+  });
 
   const Clothing_Item9= await prisma.clothing_Item.create({
     data: {
@@ -175,165 +175,165 @@ const seedDb = async () => {
     },
   });
 
-//   const Clothing_Item11= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'elegance',
-//       forMen:                    false,
-//       garment_type:             'blouse',
-//       color:                    'off-white',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/wUxT9Qu.png',
-//       description:              '3/4 sleeve, tie-neck blouse.'
-//     },
-//   });
+  const Clothing_Item11= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'elegance',
+      forMen:                    false,
+      garment_type:             'blouse',
+      color:                    'off-white',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/wUxT9Qu.png',
+      description:              '3/4 sleeve, tie-neck blouse.'
+    },
+  });
 
 
-//   const Clothing_Item12= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'elegance',
-//       forMen:                    false,
-//       garment_type:             'blouse',
-//       color:                    'black',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/qnSsVNZ.png',
-//       description:              'tiered, long-sleeve blouse.'
-//     },
-//   });
+  const Clothing_Item12= await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'elegance',
+      forMen:                    false,
+      garment_type:             'blouse',
+      color:                    'black',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/qnSsVNZ.png',
+      description:              'tiered, long-sleeve blouse.'
+    },
+  });
 
-//   const Clothing_Item13= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'chic',
-//       forMen:                    false,
-//       garment_type:             'blouse',
-//       color:                    'white',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/aSIepwn.png',
-//       description:              'white and black cropped polka dot blouse.'
-//     },
-//   });
+  const Clothing_Item13= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'chic',
+      forMen:                    false,
+      garment_type:             'blouse',
+      color:                    'white',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/aSIepwn.png',
+      description:              'white and black cropped polka dot blouse.'
+    },
+  });
 
 //                 // men's shirts
 
-//   const Clothing_Item14= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'casual',
-//       forMen:                    true,
-//       garment_type:             'shirt',
-//       color:                    'red',
-//       weather_compatability:    'summer',
-//       img_url:                  'https://imgur.com/YOWksxX.png',
-//       description:              'red polo shirt.'
-//     },
-//   });
+  const Clothing_Item14= await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'casual',
+      forMen:                    true,
+      garment_type:             'shirt',
+      color:                    'red',
+      weather_compatability:    'summer',
+      img_url:                  'https://imgur.com/YOWksxX.png',
+      description:              'red polo shirt.'
+    },
+  });
 
-//   const Clothing_Item15= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'casual',
-//       forMen:                    true,
-//       garment_type:             'shirt',
-//       color:                    'green',
-//       weather_compatability:    'summer',
-//       img_url:                  'https://imgur.com/YOWksxX.png',
-//       description:              'green crewneck t-shirt.'
-//     },
-//   });
+  const Clothing_Item15= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'casual',
+      forMen:                    true,
+      garment_type:             'shirt',
+      color:                    'green',
+      weather_compatability:    'summer',
+      img_url:                  'https://imgur.com/YOWksxX.png',
+      description:              'green crewneck t-shirt.'
+    },
+  });
 
-//   const Clothing_Item16= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'casual',
-//       forMen:                    true,
-//       garment_type:             'shirt',
-//       color:                    'blue',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/Cv4qT8B.png',
-//       description:              'blue plaid flannel shirt.'
-//     },
-//   });
+  const Clothing_Item16= await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'casual',
+      forMen:                    true,
+      garment_type:             'shirt',
+      color:                    'blue',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/Cv4qT8B.png',
+      description:              'blue plaid flannel shirt.'
+    },
+  });
 
-//   const Clothing_Item17= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'casual',
-//       forMen:                    true,
-//       garment_type:             'shirt',
-//       color:                    'red',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/Cv4qT8B.png',
-//       description:              'red plaid flannel shirt.'
-//     },
-//   });
+  const Clothing_Item17= await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'casual',
+      forMen:                    true,
+      garment_type:             'shirt',
+      color:                    'red',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/Cv4qT8B.png',
+      description:              'red plaid flannel shirt.'
+    },
+  });
 //                     // men's outterwear
 
-//   const Clothing_Item4 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'streetwear',
-//       forMen:                    true,
-//       garment_type:             'jacket',
-//       color:                    'blue',
-//       weather_compatability:    'winter',
-//       img_url:                  'https://imgur.com/zGZwsdb.png',
-//       description:              'Blue puffer jacket.'
-//     },
-//   });
+  const Clothing_Item4 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'casual',
+      style_type:               'streetwear',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'blue',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/zGZwsdb.png',
+      description:              'Blue puffer jacket.'
+    },
+  });
 
-//   const Clothing_Item18= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'athliesure',
-//       forMen:                    true,
-//       garment_type:             'jacket',
-//       color:                    'red',
-//       weather_compatability:    'winter',
-//       img_url:                  'https://imgur.com/nCBMm36.png',
-//       description:              'red mid-weight windbreaker with black fleece lining.'
-//     },
-//   });
+  const Clothing_Item18= await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'red',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/nCBMm36.png',
+      description:              'red mid-weight windbreaker with black fleece lining.'
+    },
+  });
 
-//   const Clothing_Item19= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'athliesure',
-//       forMen:                    true,
-//       garment_type:             'jacket',
-//       color:                    'black',
-//       weather_compatability:    'winter',
-//       img_url:                  'https://imgur.com/vpcJkXq.png',
-//       description:              'black NorthFace puffer jacket.'
-//     },
-//   });
+  const Clothing_Item19= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    true,
+      garment_type:             'jacket',
+      color:                    'black',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/vpcJkXq.png',
+      description:              'black NorthFace puffer jacket.'
+    },
+  });
 
 //                 // women's outterwear
 
-//   const Clothing_Item20= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'athliesure',
-//       forMen:                    false,
-//       garment_type:             'jacket',
-//       color:                    'pink',
-//       weather_compatability:    'winter',
-//       img_url:                  'https://imgur.com/miJ2oz4.png',
-//       description:              'light pink jacket with faux-fur hood.'
-//     },
-//   });
+  const Clothing_Item20= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'athliesure',
+      forMen:                    false,
+      garment_type:             'jacket',
+      color:                    'pink',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/miJ2oz4.png',
+      description:              'light pink jacket with faux-fur hood.'
+    },
+  });
 
   console.log('Database seeded successfully', user1);
 } catch (error) {
@@ -342,8 +342,6 @@ const seedDb = async () => {
     await prisma.$disconnect();
 }
   };
-
-  
  
 
 seedDb();
