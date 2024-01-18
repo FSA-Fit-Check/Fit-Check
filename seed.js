@@ -45,19 +45,19 @@ const seedDb = async () => {
 //     },
 //   });
 
-//   const Clothing_Item1 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'sporty',
-//       forMen:                    true,
-//       garment_type:             'shorts',
-//       color:                    'tan',
-//       weather_compatability:    'summer',
-//       img_url:                  'https://imgur.com/uNB6Yu5.png',
-//       description:              'Tan cargo shorts.'
-//     },
-//   });
+  const Clothing_Item1 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'casual',
+      style_type:               'sporty',
+      forMen:                    true,
+      garment_type:             'shorts',
+      color:                    'tan',
+      weather_compatability:    'summer',
+      img_url:                  'https://imgur.com/uNB6Yu5.png',
+      description:              'Tan cargo shorts.'
+    },
+  });
 
   const Clothing_Item2 = await prisma.clothing_Item.create({
     data: {
@@ -73,19 +73,19 @@ const seedDb = async () => {
     },
   });
 
-//   const Clothing_Item3 = await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'business',
-//       style_type:               'business',
-//       forMen:                    true,
-//       garment_type:             'trousers',
-//       color:                    'tan',
-//       weather_compatability:    'summer',
-//       img_url:                  'https://imgur.com/CigfvuO.png',
-//       description:              'tan chino-trouser pants.'
-//     },
-//   });
+  const Clothing_Item3 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user3.id,
+      occasion:                 'business',
+      style_type:               'business',
+      forMen:                    true,
+      garment_type:             'trousers',
+      color:                    'tan',
+      weather_compatability:    'summer',
+      img_url:                  'https://imgur.com/CigfvuO.png',
+      description:              'tan chino-trouser pants.'
+    },
+  });
 
   
 //   const Clothing_Item5 = await prisma.Clothing_Item.create({
@@ -161,19 +161,19 @@ const seedDb = async () => {
   });
 //                 // women's blouses
 
-//   const Clothing_Item10= await prisma.Clothing_Item.create({
-//     data: {
-//       user_id: userPreferences.id,
-//       occasion:                 'casual',
-//       style_type:               'elegance',
-//       forMen:                    false,
-//       garment_type:             'blouse',
-//       color:                    'light-gray',
-//       weather_compatability:    'fall',
-//       img_url:                  'https://imgur.com/wUxT9Qu.png',
-//       description:              'tie-waste, rouched sleeve blouse.'
-//     },
-//   });
+  const Clothing_Item10= await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'elegance',
+      forMen:                    false,
+      garment_type:             'blouse',
+      color:                    'light-gray',
+      weather_compatability:    'fall',
+      img_url:                  'https://imgur.com/wUxT9Qu.png',
+      description:              'tie-waste, rouched sleeve blouse.'
+    },
+  });
 
 //   const Clothing_Item11= await prisma.Clothing_Item.create({
 //     data: {
