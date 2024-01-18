@@ -27,8 +27,8 @@ router.post('/', async(req, res) => {
 
     // Username and password have minimum length requirement.
 
-      throw new Error("Username already exists. It needs to be unique!");
-    }
+     // throw new Error("Username already exists. It needs to be unique!");
+    
 
     // Username, email, and password have minimum length requirement.
 
