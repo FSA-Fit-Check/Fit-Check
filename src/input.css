@@ -1,3 +1,5 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* C: I was expecting to see the base tailwind classes in either index.css or App.css. This wasnt necessary to have to build for tailwind css but if its working for you then its okay to keep */

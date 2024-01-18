@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import '../output.css';
+import React, { useState } from "react";
+import "../output.css";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [responseMessage, setResponseMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username,
@@ -32,33 +32,36 @@ const Login = () => {
       }
     } catch (error) {
       setResponseMessage(`Error during login: ${error}`);
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
       // Handle other errors, e.g., network issues
     }
   };
 
+  // C: handleSubmit expects an event that is not being passed
   return (
-    <div className='bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream'>
-      <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
-        <h1 className='text-xl text-whitecream font-serif italic'>User Log-in Form</h1>
-        <label className='flex flex-row justify-center gap-3 text-gray'>
+    <div className="bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream">
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+        <h1 className="text-xl text-whitecream font-serif italic">
+          User Log-in Form
+        </h1>
+        <label className="flex flex-row justify-center gap-3 text-gray">
           Username:
           <input
             type="text"
             name="name"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className='rounded-md bg-verydarkgray text-whitecream'
+            className="rounded-md bg-verydarkgray text-whitecream"
           />
         </label>
-        <label className='flex flex-row justify-center gap-3 text-gray'>
+        <label className="flex flex-row justify-center gap-3 text-gray">
           Password:
           <input
             type="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='rounded-md bg-verydarkgray text-whitecream'
+            className="rounded-md bg-verydarkgray text-whitecream"
           />
         </label>
 
@@ -71,5 +74,7 @@ const Login = () => {
     </div>
   );
 };
+
+// C: good use of short circuiting for the responseMessage
 
 export default Login;
