@@ -32,7 +32,7 @@ const UserPrefForm = () => {
         
             if (result.success) {
               setSearchResults(result.data)
-              // console.log('Preferences submitted successfully:', result.data);
+              console.log('Preferences submitted successfully:', result.data);
             } else {
               console.error('Error submitting preferences:', result.error);
             }
