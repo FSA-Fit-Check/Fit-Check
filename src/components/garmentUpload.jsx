@@ -2,48 +2,37 @@ import React from "react";
 
 const GarmentUploadForm = () => {
 
-    return (
-        <div>
-                  <form>
-            <label>
-                Garment Type: 
-                <input type="text" name="Garment Type"/><br/>
-            </label>
-            <br />
-            <br />
-            <label>
-                Weather Compatability: 
-                <input type="text" name="Weather Compatability"/><br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                style Type: 
-                <input type="password" name="style Type"/><br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Color: 
-                <input type="text" name="Color"/><br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Occasion: 
-                <input type="text" name="Occasion"/><br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Gender: 
-                <input type="text" name="Gender"/><br/>
-            </label>
-            <br />
-            <button type="submit">Upload</button>
-            </form>
-        </div> 
-    )
+  return (
+    <form className='flex flex-col gap-3'>
+        <label>
+            Garment Type: 
+            <input type="text" name="Garment Type"/>
+        </label>
+        <label>
+            Weather Compatability: 
+            <input type="text" name="Weather Compatability"/>
+        </label>
+        <label>
+            style Type: 
+            <input type="password" name="style Type"/>
+        </label>
+        <label>
+            Color: 
+            <input type="text" name="Color"/>
+        </label>
+        <label>
+            Occasion: 
+            <input type="text" name="Occasion"/>
+        </label>
+        <label>
+            Gender: 
+            <input type="text" name="Gender"/>
+        </label>
+        <br />
+        
+        <button type="submit">Upload</button>
+    </form> 
+  );
 }
 
 export default GarmentUploadForm;

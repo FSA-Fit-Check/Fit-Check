@@ -1,161 +1,141 @@
 import React, { useState } from 'react';
 
 const UserPrefForm = () => {
-    const [formInput, setFormInput] = useState({
-        // name: '',
-        // email: '',
-        // password: '',
-        garmentType: '',
-        weatherCompatibility: '',
-        styleType: '',
-        color: '',
-        occasion: '',
-        gender: '',
-      });    
+  const [formInput, setFormInput] = useState({
+    // name: '',
+    // email: '',
+    // password: '',
+    garmentType: '',
+    weatherCompatibility: '',
+    styleType: '',
+    color: '',
+    occasion: '',
+    gender: '',
+  });    
 
-      const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
-      const handleSubmit = async (event) => {
-        event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        try {
-            const response = await fetch('http://localhost:3000/userprefform', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(formInput),
-            });
-    
-            const result = await response.json();
+    try {
+      const response = await fetch('http://localhost:3000/userprefform', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formInput),
+      });
 
-        
-            if (result.success) {
-              setSearchResults(result.data)
-              console.log('Preferences submitted successfully:', result.data);
-            } else {
-              console.error('Error submitting preferences:', result.error);
-            }
-          } catch (error) {
-            console.error('Error during form submission:', error);
-            
-          }
-        };
+      const result = await response.json();
+
+      if (result.success) {
+        setSearchResults(result.data)
+        console.log('Preferences submitted successfully:', result.data);
+      } else {
+        console.error('Error submitting preferences:', result.error);
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+    }};
       
-        return (
-          <div>
-          <h1>User Preferences Questionnaire</h1>
-          <br />
-          <br />
-          <form onSubmit={handleSubmit}>
-            {/* <label> */}
-                {/* make username, email and pword nullable for non-registered users to 
-                be able to submit the form without login credentials ??  */}
-                {/* Username:                           
-                <input type="text"
-                 name="name"
-                 value={formInput.garmentType}
-                 onChange={(e) => setFormInput({ ...formInput, username: e.target.value })}/>
-            </label>
-            <br/>
-            <label>
-                <br />
-                <br />
-                Email: 
-                <input type="email" name="email"/><br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Password: 
-                <input type="password"
-                name="password"
-                value={formInput.garmentType}
-                onChange={(e) => setFormInput({ ...formInput, password: e.target.value })}/>
-                <br/>
-            </label>
-            <br/>
-            <br/> */}
-            <label>
-                Garment Type: 
-                <input type="text" 
-                name="Garment Type"
-                value={formInput.garmentType}
-                onChange={(e) => setFormInput({ ...formInput, garmentType: e.target.value })}/>
-                <br/>
-            </label>
-            <br />
-            <br />
-            <label>
-                Weather Compatability: 
-                <input type="text"
-                name="Weather Compatability"
-                value={formInput.weatherCompatibility}
-                onChange={(e) => setFormInput({ ...formInput, weatherCompatibility: e.target.value })}/>
-                <br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                style Type: 
-                <input type="password"
-                name="style Type"
-                value={formInput.styleType}
-                onChange={(e) => setFormInput({ ...formInput, styleType: e.target.value })}/>
-                <br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Color: 
-                <input type="text"
-                name="Color"
-                value={formInput.color}
-                onChange={(e) => setFormInput({ ...formInput, color: e.target.value })}/>
-                <br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Occasion: 
-                <input type="text"
-                name="Occasion"
-                value={formInput.occasion}
-                onChange={(e) => setFormInput({ ...formInput, occasion: e.target.value })}/>
-                <br/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Gender: 
-                <input type="text"
-                name="Gender"
-                value={formInput.gender}
-                onChange={(e) => setFormInput({ ...formInput, gender: e.target.value })}/>
-                <br/>
-            </label>
-            <br />
-            <button type="submit">Submit</button>
-            </form>
+  return (
+    <form onSubmit={handleSubmit}
+    className='flex flex-col gap-3 text-whitecream'>
+      <h1
+      className='text-xl font-serif italic'
+      >User Preferences Questionnaire</h1>
 
-            <div>
-                <h2>Preference Results</h2>
-                <ul>
-                    {searchResults.map((result) =>
-                    ( 
-                        <li key={result.id}>
-                          <strong>Garment Type:</strong> {result.garment_type},{' '}
-                          <strong>Weather Compatibility:</strong> {result.weather_compatability},{' '}
-                          <strong>Style Type:</strong> {result.style_type}, <strong>Color:</strong> {result.color},{' '}
-                          <strong>Occasion:</strong> {result.occasion}, <strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},{' '}
-                          <strong>Description:</strong> {result.description}
-                        </li>
-                    ))
-                }
-                </ul>
-            </div>
-        </div>
-        
-        );
-            };
-      export default UserPrefForm;
+      {/* <label> */}
+          {/* make username, email and pword nullable for non-registered users to 
+          be able to submit the form without login credentials ??  */}
+          {/* Username:                           
+          <input type="text"
+            name="name"
+            value={formInput.garmentType}
+            onChange={(e) => setFormInput({ ...formInput, username: e.target.value })}/>
+      </label>
+      <br/>
+      <label>
+          <br />
+          <br />
+          Email: 
+          <input type="email" name="email"/><br/>
+      </label>
+      <br/>
+      <br/>
+      <label>
+          Password: 
+          <input type="password"
+          name="password"
+          value={formInput.garmentType}
+          onChange={(e) => setFormInput({ ...formInput, password: e.target.value })}/>
+          <br/>
+      </label>
+      <br/>
+      <br/> */}
+
+      <label>
+          Garment Type: 
+          <input type="text" 
+          name="Garment Type"
+          value={formInput.garmentType}
+          onChange={(e) => setFormInput({ ...formInput, garmentType: e.target.value })}/>
+      </label>
+      <label>
+          Weather Compatability: 
+          <input type="text"
+          name="Weather Compatability"
+          value={formInput.weatherCompatibility}
+          onChange={(e) => setFormInput({ ...formInput, weatherCompatibility: e.target.value })}/>
+      </label>
+      <label>
+          style Type: 
+          <input type="password"
+          name="style Type"
+          value={formInput.styleType}
+          onChange={(e) => setFormInput({ ...formInput, styleType: e.target.value })}/>
+      </label>
+      <label>
+          Color: 
+          <input type="text"
+          name="Color"
+          value={formInput.color}
+          onChange={(e) => setFormInput({ ...formInput, color: e.target.value })}/>
+      </label>
+      <label>
+          Occasion: 
+          <input type="text"
+          name="Occasion"
+          value={formInput.occasion}
+          onChange={(e) => setFormInput({ ...formInput, occasion: e.target.value })}/>
+      </label>
+      <label>
+          Gender: 
+          <input type="text"
+          name="Gender"
+          value={formInput.gender}
+          onChange={(e) => setFormInput({ ...formInput, gender: e.target.value })}/>
+      </label>
+      <button type="submit">Submit</button>
+
+  <div>
+    <h2>Preference Results</h2>
+    <ul>
+      {searchResults.map((result) =>
+        ( 
+          <li key={result.id}>
+            <strong>Garment Type:</strong> {result.garment_type},{' '}
+            <strong>Weather Compatibility:</strong> {result.weather_compatability},{' '}
+            <strong>Style Type:</strong> {result.style_type}, <strong>Color:</strong> {result.color},{' '}
+            <strong>Occasion:</strong> {result.occasion}, <strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},{' '}
+            <strong>Description:</strong> {result.description}
+          </li>
+        ))
+      }
+      </ul>
+    </div>
+  </form>);
+}
+
+export default UserPrefForm;

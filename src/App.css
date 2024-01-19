@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  max-width: 1680px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -30,4 +30,28 @@
   .img-gallery {
     grid-template-columns: 50% 50%;
   }
+}
+
+.icon {
+  filter:
+    invert(96%)
+    sepia(7%)
+    saturate(941%)
+    hue-rotate(314deg)
+    brightness(102%)
+    contrast(103%);
+  
+  max-width: 30px;
+  max-height: 30px;
+}
+
+nav {
+  width: 100%;
+}
+
+input {
+  min-height: 2rem;
+  padding: 0.3rem !important;
+  border-radius: 0.375rem;
+  color: #fff4e8;
 }
