@@ -28,13 +28,12 @@ const Home = () => {
   };
 
   return (
-
-    <>
-      <div>
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the homepage content.</p>
-        <div className='containerOne'>
-          <p>Weather Content</p>
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <p>This is the homepage content.</p>
+      < GarmentGallery />
+      <div className='containerOne'>
+          <p>Weather Content</p><br/>
           {weatherData && (
             <div>
               <p>Temperature: {weatherData.properties.periods[0].temperature} °F</p>
@@ -42,17 +41,7 @@ const Home = () => {
             </div>
           )}
           <br/>
-          <button onClick={handleWeatherButtonClick}>
-
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is the homepage content.</p>
-      < GarmentGallery />
-      <div className='containerOne'>
-          <p>Weather Content</p><br/>
-          <button>
-            Check the Weather!
-          </button>
+          <button onClick={handleWeatherButtonClick}/>
         </div>
       < UserPrefForm />
     </div>
