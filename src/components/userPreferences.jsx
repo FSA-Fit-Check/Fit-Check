@@ -78,50 +78,93 @@ const UserPrefForm = () => {
             <br/> */}
             <label>
                 Garment Type: 
-                <input type="text" 
-                name="Garment Type"
-                value={formInput.garmentType}
-                onChange={(e) => setFormInput({ ...formInput, garmentType: e.target.value })}/>
+                <select
+                    name="Garment Type"
+                    value={formInput.garmentType}
+                    onChange={(e) => setFormInput({ ...formInput, garmentType: e.target.value })}>
+                    <option value="choose">Choose One</option>
+                    <option value="shirt">Shirts</option>
+                    <option value="blouse">Blouses</option>
+                    <option value="shorts">Shorts</option>
+                    <option value="leggings">Leggings</option>
+                    <option value="trousers">Trousers</option>
+                    <option value="skirts">Skirts</option>
+                    <option value="pants">Pants</option>
+                    <option value="jackets">Jackets</option>
+                </select>
                 <br/>
             </label>
             <br />
             <br />
             <label>
                 Weather Compatability: 
-                <input type="text"
-                name="Weather Compatability"
-                value={formInput.weatherCompatibility}
-                onChange={(e) => setFormInput({ ...formInput, weatherCompatibility: e.target.value })}/>
+                <select
+                    name="Weather Compatability"
+                    value={formInput.weatherCompatibility}
+                    onChange={(e) => setFormInput({ ...formInput, weatherCompatibility: e.target.value })}>
+                    <option value="choose">Please Choose One</option>
+                    <option value="fall">Fall</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="winter">Winter</option>
+                </select>
                 <br/>
             </label>
             <br/>
             <br/>
             <label>
                 style Type: 
-                <input type="password"
-                name="style Type"
-                value={formInput.styleType}
-                onChange={(e) => setFormInput({ ...formInput, styleType: e.target.value })}/>
+                <select
+                    name="Style Type"
+                    value={formInput.styleType}
+                    onChange={(e) => setFormInput({ ...formInput, styleType: e.target.value })}>
+                    <option value="choose">Please Choose One</option>
+                    <option value="athleisure">Athleisure</option>
+                    <option value="business">Business</option>
+                    <option value="casual">Casual</option>
+                    <option value="chic">Chic</option>
+                    <option value="elegance">Elegance</option>
+                    <option value="grunge">Grunge</option>
+                    <option value="sporty">Sporty</option>
+                    <option value="streetwear">Streetwear</option>
+                </select>
                 <br/>
             </label>
             <br/>
             <br/>
             <label>
                 Color: 
-                <input type="text"
-                name="Color"
-                value={formInput.color}
-                onChange={(e) => setFormInput({ ...formInput, color: e.target.value })}/>
+                <select
+                    name="Color"
+                    value={formInput.color}
+                    onChange={(e) => setFormInput({ ...formInput, color: e.target.value })}>
+                    <option value="choose">Please Choose One</option>
+                    <option value="tan">Tan</option>
+                    <option value="gray">Gray</option>
+                    <option value="blue">Blue</option>
+                    <option value="light-gray">Light-Gray</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="green">Green</option>
+                    <option value="pink">Pink</option>
+                    <option value="red">Red</option>
+                </select>
                 <br/>
             </label>
             <br/>
             <br/>
             <label>
                 Occasion: 
-                <input type="text"
-                name="Occasion"
-                value={formInput.occasion}
-                onChange={(e) => setFormInput({ ...formInput, occasion: e.target.value })}/>
+                <select
+                    name="Occasion"
+                    value={formInput.occasion}
+                    onChange={(e) => setFormInput({ ...formInput, occasion: e.target.value })}>
+                    <option value="choose">Please Choose One</option>
+                    <option value="business">Business</option>
+                    <option value="casual">Casual</option>
+                    <option value="formal">Formal</option>
+                    <option value="athletic">Athletic</option>
+                </select>
                 <br/>
             </label>
             <br/>
