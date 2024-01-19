@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import GarmentUploadForm from './garmentUpload';
 
 const Profile = () => {
 
   return (
     <div
-    className='flex flex-col gap-3 text-whitecream'> 
+        className='flex flex-col gap-3 text-whitecream'> 
       {/* display username here */}
       <h1>Hello, User! </h1>
-      <GarmentUploadForm />
+      <Link to="/garmentUpload">Upload Garments for Your Wardrobe Here!</Link>    
     </div>
   )
 }
