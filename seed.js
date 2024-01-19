@@ -58,6 +58,7 @@ const seedDb = async () => {
       description:              'Tan cargo shorts.'
     },
   });
+   //                 // Men's Bottoms
 
   const Clothing_Item2 = await prisma.clothing_Item.create({
     data: {
@@ -104,7 +105,7 @@ const seedDb = async () => {
 
   const Clothing_Item6 = await prisma.clothing_Item.create({
     data: {
-      user_id: user2.id,
+      user_id: user3.id,
       occasion:                 'business',
       style_type:               'business',
       forMen:                    false,
@@ -113,6 +114,65 @@ const seedDb = async () => {
       weather_compatability:    'winter',
       img_url:                  'https://imgur.com/q7jSZCC.png',
       description:              'charcoal gray workforce trousers'
+    },
+  });
+
+  //                // New mens bottoms [19Jan24]
+
+  const Clothing_Item21 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'casual',
+      style_type:               'streetwear',
+      forMen:                    true,
+      garment_type:             'pants',
+      color:                    'blue',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/WhMA9zy.png',
+      description:              'light-wash skinny jeans'
+    },
+  });
+
+
+  const Clothing_Item22 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'casual',
+      style_type:               'streetwear',
+      forMen:                    true,
+      garment_type:             'pants',
+      color:                    'blue5',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/uLTEmT4.png',
+      description:              'straight-leg jeans'
+    },
+  });
+
+  const Clothing_Item23 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user1.id,
+      occasion:                 'business',
+      style_type:               'business',
+      forMen:                    true,
+      garment_type:             'trousers',
+      color:                    'blue',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/Jwsv45t.png',
+      description:              'blue tapered-leg suit trousers'
+    },
+  });
+
+  const Clothing_Item24 = await prisma.clothing_Item.create({
+    data: {
+      user_id: user2.id,
+      occasion:                 'business',
+      style_type:               'business',
+      forMen:                    true,
+      garment_type:             'trousers',
+      color:                    'gray',
+      weather_compatability:    'winter',
+      img_url:                  'https://imgur.com/ybLgn4v.png',
+      description:              'gray tapered-leg suit trousers'
     },
   });
 
@@ -184,7 +244,7 @@ const seedDb = async () => {
       garment_type:             'blouse',
       color:                    'off-white',
       weather_compatability:    'fall',
-      img_url:                  '[img]https://imgur.com/wneT3c3.png',
+      img_url:                  'https://imgur.com/wneT3c3.png',
       description:              '3/4 sleeve, tie-neck blouse.'
     },
   });
