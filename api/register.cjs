@@ -20,15 +20,8 @@ router.post('/', async(req, res) => {
       }
     })
     if (userAlreadyExists) {
-
-      res.send("Username already exists. It needs to be unique!");
-      return;
+      throw new Error("Username already exists. It needs to be unique!");
     }
-
-    // Username and password have minimum length requirement.
-
-     // throw new Error("Username already exists. It needs to be unique!");
-    
 
     // Username, email, and password have minimum length requirement.
 
