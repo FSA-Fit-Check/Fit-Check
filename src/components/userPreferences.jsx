@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-// import { link } from '../../api/login.cjs';
 
 const UserPrefForm = () => {
     const [formInput, setFormInput] = useState({
-        name: '',
-        email: '',
-        password: '',
+        // name: '',
+        // email: '',
+        // password: '',
         garmentType: '',
         weatherCompatibility: '',
         styleType: '',
@@ -20,7 +19,7 @@ const UserPrefForm = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3000/submitFormData', {
+            const response = await fetch('http://localhost:3000/userprefform', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -32,6 +31,7 @@ const UserPrefForm = () => {
 
         
             if (result.success) {
+              setSearchResults(result.data)
               console.log('Preferences submitted successfully:', result.data);
             } else {
               console.error('Error submitting preferences:', result.error);
@@ -143,7 +143,13 @@ const UserPrefForm = () => {
                 <ul>
                     {searchResults.map((result) =>
                     ( 
-                        <li key={result.id}></li>
+                        <li key={result.id}>
+                          <strong>Garment Type:</strong> {result.garment_type},{' '}
+                          <strong>Weather Compatibility:</strong> {result.weather_compatability},{' '}
+                          <strong>Style Type:</strong> {result.style_type}, <strong>Color:</strong> {result.color},{' '}
+                          <strong>Occasion:</strong> {result.occasion}, <strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},{' '}
+                          <strong>Description:</strong> {result.description}
+                        </li>
                     ))
                 }
                 </ul>
