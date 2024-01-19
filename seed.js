@@ -111,7 +111,7 @@ const seedDb = async () => {
       garment_type:             'trousers',
       color:                    'charcoal',
       weather_compatability:    'winter',
-      img_url:                  'https://imgur.com/q7jSZCC',
+      img_url:                  'https://imgur.com/q7jSZCC.png',
       description:              'charcoal gray workforce trousers'
     },
   });
@@ -184,7 +184,7 @@ const seedDb = async () => {
       garment_type:             'blouse',
       color:                    'off-white',
       weather_compatability:    'fall',
-      img_url:                  'https://imgur.com/wUxT9Qu.png',
+      img_url:                  '[img]https://imgur.com/wneT3c3.png',
       description:              '3/4 sleeve, tie-neck blouse.'
     },
   });
@@ -243,7 +243,7 @@ const seedDb = async () => {
       garment_type:             'shirt',
       color:                    'green',
       weather_compatability:    'summer',
-      img_url:                  'https://imgur.com/YOWksxX.png',
+      img_url:                  'https://imgur.com/LcjjOCy.png',
       description:              'green crewneck t-shirt.'
     },
   });
@@ -271,7 +271,7 @@ const seedDb = async () => {
       garment_type:             'shirt',
       color:                    'red',
       weather_compatability:    'fall',
-      img_url:                  'https://imgur.com/Cv4qT8B.png',
+      img_url:                  'https://imgur.com/lwBCWjt.png',
       description:              'red plaid flannel shirt.'
     },
   });
