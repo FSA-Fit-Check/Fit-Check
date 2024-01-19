@@ -3,15 +3,14 @@ import GarmentUploadForm from './garmentUpload';
 
 const Profile = () => {
 
-    return (
-        <div> 
-            {/* display username here */}
-            <h1>Hello, User! </h1>
-            <br />
-            <br />
-            <GarmentUploadForm />
-        </div>
-    )
+  return (
+    <div
+    className='flex flex-col gap-3 text-whitecream'> 
+      {/* display username here */}
+      <h1>Hello, User! </h1>
+      <GarmentUploadForm />
+    </div>
+  )
 }
 
 export default Profile;

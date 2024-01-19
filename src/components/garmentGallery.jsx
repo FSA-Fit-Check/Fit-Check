@@ -29,7 +29,13 @@ const GarmentGallery = () => {
       bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream
       '
       >
-        <h1 className='text-xl text-whitecream font-serif italic'>Pick your fit!</h1>
+        <div className='flex flex-row
+        justify-center items-center gap-2
+        '>
+          <img src="/clothing_icon.svg"
+          className='icon'></img>
+          <h1 className='text-xl text-whitecream font-serif italic'>Pick your fit!</h1>
+        </div>
         
         <div className='img-gallery'>
           {garments.map((garment) => {
