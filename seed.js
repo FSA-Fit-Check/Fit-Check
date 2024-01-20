@@ -110,7 +110,7 @@ const seedDb = async () => {
       style_type:               'business',
       forMen:                    false,
       garment_type:             'trousers',
-      color:                    'charcoal',
+      color:                    'gray',
       weather_compatability:    'winter',
       img_url:                  'https://imgur.com/q7jSZCC.png',
       description:              'charcoal gray workforce trousers'
@@ -128,7 +128,7 @@ const seedDb = async () => {
       garment_type:             'pants',
       color:                    'blue',
       weather_compatability:    'winter',
-      img_url:                  'https://imgur.com/WhMA9zy.png',
+      img_url:                  'https://imgur.com/faGBaYm.png',
       description:              'light-wash skinny jeans'
     },
   });
@@ -143,7 +143,7 @@ const seedDb = async () => {
       garment_type:             'pants',
       color:                    'blue5',
       weather_compatability:    'winter',
-      img_url:                  'https://imgur.com/uLTEmT4.png',
+      img_url:                  'https://imgur.com/FQAkdeB.png',
       description:              'straight-leg jeans'
     },
   });
@@ -259,7 +259,7 @@ const seedDb = async () => {
       garment_type:             'pants',
       color:                    'black',
       weather_compatability:    'fall',
-      img_url:                  'https://imgur.com/qemeoPH.png',
+      img_url:                  'https://imgur.com/fjJ1rHY.png',
       description:              'black Versace faux PU leather pants.'
     },
   });
@@ -275,20 +275,6 @@ const seedDb = async () => {
       weather_compatability:    'spring',
       img_url:                  'https://imgur.com/OskBdSm.png',
       description:              'white tie-waist gaucho pants.'
-    },
-  });
-
-  const Clothing_Item46 = await prisma.clothing_Item.create({
-    data: {
-      user_id: user1.id,
-      occasion:                 'casual',
-      style_type:               'chic',
-      forMen:                    false,
-      garment_type:             'skirt',
-      color:                    'multicolor',
-      weather_compatability:    'summer',
-      img_url:                  'https://imgur.com/7PG7ZrB.png',
-      description:              'plaid skater skirt.'
     },
   });
 
@@ -329,7 +315,7 @@ const seedDb = async () => {
       garment_type:             'skirt',
       color:                    'black',
       weather_compatability:    'summer',
-      img_url:                  'https://imgur.com/RdYN0QA.png',
+      img_url:                  'https://imgur.com/bZvqrpJ.png',
       description:              'black PU leather, studded-waist skirt.'
     },
   });
@@ -387,7 +373,7 @@ const seedDb = async () => {
       garment_type:             'blouse',
       color:                    'off-white',
       weather_compatability:    'fall',
-      img_url:                  'https://imgur.com/wneT3c3.png',
+      img_url:                  'https://imgur.com/k93rz15.png',
       description:              '3/4 sleeve, tie-neck blouse.'
     },
   });
