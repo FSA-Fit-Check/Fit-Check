@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserPrefForm from './userPreferences';
+import GarmentGallery from './garmentGallery';
+import WeatherContent from './weatherContent';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is the homepage content.</p>
+    <div 
+    className='flex flex-col gap-3'>
+      <h1 className='text-whitecream'>Fit Check</h1>
+      < GarmentGallery />
+      < WeatherContent />
       < UserPrefForm />
     </div>
-
   );
 };
 

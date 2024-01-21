@@ -42,7 +42,6 @@ model Outfit {
   occasion              String
   style_type            String
   color                 String
-  img_url               String
   user                  User?                  @relation(fields: [user_id], references: [id])
   Outfit_Clothing_item  Outfit_Clothing_item[]
 }

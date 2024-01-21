@@ -2,11 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const loginRoute = require('./api/login.cjs');
 const registerRoute = require('./api/register.cjs');
-const outfitRoute = require('./api/outfit.cjs');
+const garmentRoute = require('./api/garments.cjs');
 const cors = require('cors');
+const UserPrefForm = require('./api/userPreferences.cjs');
+const outfitRoute = require('./api/outfit.cjs');
 
 const app = express();
 const port = 3000;
+
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -18,6 +23,8 @@ app.use(bodyParser.json());
 
 app.use('/login', loginRoute)
 app.use('/register', registerRoute)
+app.use('/userprefform', UserPrefForm);
+app.use('/garments', garmentRoute)
 app.use('/outfit', outfitRoute)
 
 app.listen(port, () => {
