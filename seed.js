@@ -479,7 +479,6 @@ const seedDb = async () => {
     },
   });
 
-
   //                  womens dresses
 
   const Clothing_Item37= await prisma.clothing_Item.create({
@@ -575,7 +574,7 @@ const seedDb = async () => {
       garment_type:             'dress',
       color:                    'black',              
       weather_compatability:    'fall',
-      img_url:                  'https://imgur.com/xU3QCeh.png',
+      img_url:                  'https://imgur.com/3M2kSzs.png',
       description:              'black, corseted ballerina dress.'
     },
   });
