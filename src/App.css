@@ -33,6 +33,46 @@
   }
 }
 
+
+.garment-grid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+@media (max-width: 1550px) {
+  .garment-grid {
+    grid-template-columns: 33% 34% 33%;
+  }
+}
+@media (max-width: 1200px) {
+  .garment-grid {
+    grid-template-columns: 50% 50%;
+  }
+}
+@media (max-width: 750px) {
+  .garment-grid {
+    grid-template-columns: 100%;
+  }
+}
+
+
+.split-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 0.25rem;
+  padding: 0.5rem;
+  background: black;
+  border: 2px solid #fff4e8;
+  border-radius: 6px;
+}
+.garment-specification {
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .icon {
   filter:
     invert(96%)
