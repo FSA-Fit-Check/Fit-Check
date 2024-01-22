@@ -7,6 +7,7 @@ import Login from './components/login.jsx';
 import Navbar from './components/navbar.jsx';
 import {Router, Routes, Route} from 'react-router-dom'
 import Profile from './components/profile.jsx';
+import GarmentUploadForm from './components/garmentUpload.jsx';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/garmentUpload" element={<GarmentUploadForm />} />
       </Routes>
       <br />
     </>
