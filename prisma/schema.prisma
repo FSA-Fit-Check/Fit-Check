@@ -23,6 +23,7 @@ model Clothing_Item {
   description           String
   user                  User?                  @relation(fields: [user_id], references: [id])
   Outfit_Clothing_item  Outfit_Clothing_item[]
+  favorites             Favorites[]
 }
 
 model User {
@@ -31,6 +32,7 @@ model User {
   password       String
   email          String
   clothing_items Clothing_Item[]
+  favorites      Favorites[]
   outfits        Outfit[]
 }
 
@@ -52,4 +54,17 @@ model Outfit_Clothing_item {
   outfit        Outfit        @relation(fields: [outfit_id], references: [id])
   clothing_id   Int
   clothing_item Clothing_Item @relation(fields: [clothing_id], references: [id])
+}
+
+
+//      added favorites table for user faves. [22Jan24]
+
+model Favorites {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  clothingItemId Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id])
+  clothingItem   Clothing_Item @relation(fields: [clothingItemId], references: [id])
 }
