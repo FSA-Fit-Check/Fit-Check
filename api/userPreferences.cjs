@@ -9,7 +9,6 @@ router.get('/', async(req, res) => {
 router.post('/', async (req, res) => {
     
     try {
-        const forMenValue = req.body.gender.toLowerCase() === "yes";
         const userPreferences = await prisma.clothing_Item.findMany({
             // Each preference is conditional.
             where: {
@@ -23,8 +22,8 @@ router.post('/', async (req, res) => {
                     {color: req.body.color} : {}),
                 ...(req.body.occasion !== "" && req.body.occasion !== "choose" ? 
                     {occasion: req.body.occasion} : {}),
-                ...(forMenValue ? 
-                    {forMen: forMenValue} : {})
+                ...(req.body.forMen ? 
+                    {forMen: req.body.forMen} : {})
             }
         });
 

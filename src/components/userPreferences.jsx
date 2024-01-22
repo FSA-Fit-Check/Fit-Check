@@ -10,7 +10,7 @@ const UserPrefForm = () => {
     styleType: '',
     color: '',
     occasion: '',
-    gender: '',
+    forMen: false,
   });    
 
   const [searchResults, setSearchResults] = useState([]);
@@ -31,7 +31,7 @@ const UserPrefForm = () => {
 
       if (result.success) {
         setSearchResults(result.data)
-        console.log('Preferences submitted successfully:', result.data);
+        // console.log('Preferences submitted successfully:', result.data);
       } else {
         console.error('Error submitting preferences:', result.error);
       }
@@ -106,7 +106,7 @@ const UserPrefForm = () => {
         </select>
       </label>
       <label>
-        style Type: 
+        Style Type: 
         <select
             name="Style Type"
             value={formInput.styleType}
@@ -153,31 +153,52 @@ const UserPrefForm = () => {
             <option value="athletic">Athletic</option>
         </select>
       </label>
-      <label>
-        Gender: 
-        <input type="text"
+      <label className='flex justify-center gap-3'>
+        For men: 
+        <input type="checkbox"
         name="Gender"
-        value={formInput.gender}
-        onChange={(e) => setFormInput({ ...formInput, gender: e.target.value })}/>
+        value={formInput.forMen}
+        onChange={(e) => setFormInput({ ...formInput, forMen: e.target.checked })}/>
       </label>
       <button type="submit">Submit</button>
 
-  <div>
-    <h2>Preference Results</h2>
-    <ul>
-      {searchResults.map((result) =>
-        ( 
-          <li key={result.id}>
-            <strong>Garment Type:</strong> {result.garment_type},{' '}
-            <strong>Weather Compatibility:</strong> {result.weather_compatability},{' '}
-            <strong>Style Type:</strong> {result.style_type}, <strong>Color:</strong> {result.color},{' '}
-            <strong>Occasion:</strong> {result.occasion}, <strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},{' '}
-            <strong>Description:</strong> {result.description}
-          </li>
-        ))
-      }
-      </ul>
-    </div>
+  {
+    searchResults.length > 0 ? (
+      <section
+      className='
+      bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream
+      flex flex-col gap-3'>
+        <div className='flex flex-row
+        justify-center items-center gap-2
+        '>
+          <img src="/form_icon.svg"
+          className='icon'></img>
+          <h1 className='text-xl text-whitecream font-serif italic'>Preference Results</h1>
+        </div>
+
+        <section className='garment-grid'>
+        {searchResults.map((result) =>
+          ( 
+            <div key={result.id} className='split-container'>
+              <img src={result.img_url} alt={result.description} className='garment-img'/>
+              <div className='garment-specification'>
+                <p><strong>Garment Type:</strong> {result.garment_type},</p>
+                <p><strong>Weather Compatibility:</strong> {result.weather_compatability},</p>
+                <p><strong>Style Type:</strong> {result.style_type},</p>
+                <p><strong>Color:</strong> {result.color},</p>
+                <p><strong>Occasion:</strong> {result.occasion},</p>
+                <p><strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},</p>
+                <p><strong>Description:</strong> {result.description}</p>
+              </div>
+            </div>
+          ))
+        }
+        </section>
+      </section>
+      ) : (
+        <></>
+      )
+    }
   </form>);
 }
 
