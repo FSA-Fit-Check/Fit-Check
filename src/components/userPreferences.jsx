@@ -28,7 +28,6 @@ const UserPrefForm = () => {
       });
 
       const result = await response.json();
-      console.log(formInput, JSON.stringify(formInput), response, result)
 
       if (result.success) {
         setSearchResults(result.data)
