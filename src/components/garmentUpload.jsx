@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const GarmentUpload = () => {
+const GarmentUploadForm = () => {
   const [formInput, setFormInput] = useState({
     garmentType: "",
     weatherCompatibility: "",
@@ -141,6 +141,6 @@ const GarmentUpload = () => {
       {responseMessage && <p>{responseMessage}</p>}
     </div>
   );
-}
+};
 
-export default GarmentUpload;
+export default GarmentUploadForm;
