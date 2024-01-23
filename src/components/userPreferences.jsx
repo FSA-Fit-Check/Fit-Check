@@ -41,7 +41,7 @@ const UserPrefForm = () => {
       
   return (
     <form onSubmit={handleSubmit}
-    className='flex flex-col gap-3 text-whitecream'>
+    className='panel'>
       <h1
       className='text-xl font-serif italic'
       >User Preferences Questionnaire</h1>
@@ -180,7 +180,10 @@ const UserPrefForm = () => {
         {searchResults.map((result) =>
           ( 
             <div key={result.id} className='split-container'>
-              <img src={result.img_url} alt={result.description} className='garment-img'/>
+              <img src={result.img_url}
+              alt={result.description}
+              title={result.description}
+              className='garment-img'/>
               <div className='garment-specification'>
                 <p><strong>Garment Type:</strong> {result.garment_type},</p>
                 <p><strong>Weather Compatibility:</strong> {result.weather_compatability},</p>

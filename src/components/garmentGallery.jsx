@@ -4,11 +4,12 @@ import '../output.css'
 const GarmentGallery = () => {
   
   const [garments, setGarments] = useState([]);
+  const [randomSeed, setRandomSeed] = useState(null);
 
   useEffect(() => {
     const getGarments = async() => {
       try {
-        const response = await fetch('http://localhost:3000/garments');
+        const response = await fetch('http://localhost:3000/garments/random');
         const result = await response.json();
   
         if (response.ok) {
@@ -20,13 +21,14 @@ const GarmentGallery = () => {
     };
 
     getGarments();
-  }, [])
+  }, [randomSeed])
 
   return <>
     {garments.length > 0 ? (
       <section
       className='
-      bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream
+      panel
+      random-fit-section
       '
       >
         <div className='flex flex-row
@@ -34,18 +36,22 @@ const GarmentGallery = () => {
         '>
           <img src="/clothing_icon.svg"
           className='icon'></img>
-          <h1 className='text-xl text-whitecream font-serif italic'>Pick your fit!</h1>
+          <h1 className='text-xl text-whitecream font-serif italic fullwidth'>Pick your fit!</h1>
         </div>
+
+        <button 
+        className="rounded-md bg-gray text-whitecream"
+        onClick={() => {setRandomSeed(Math.random)}}
+        >Randomize</button>
         
-        <div className='img-gallery'>
-          {garments.map((garment) => {
-            return <img src={garment.img_url}
-            alt={garment.description}
-            key={`Garment ${garment.id}`}
-            className='garment-img max-w-xs'
-            ></img>
-          })}
-        </div>
+        {garments.map((garment) => {
+          return <img src={garment.img_url}
+          alt={garment.description}
+          title={garment.description}
+          key={`Garment ${garment.id}`}
+          className='garment-img max-w-xs'
+          ></img>
+        })}
       </section>
     ) : (
       <p>...</p>
