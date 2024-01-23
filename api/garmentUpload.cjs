@@ -5,20 +5,27 @@ const prisma = new PrismaClient();
 
 router.post('/', async (req, res) => {
   try {
-    // Assuming the request body contains garment data
-    const { garmentType, weatherCompatibility, styleType, color, occasion, gender } = req.body;
+    const {
+      garment_type,
+      weather_compatability,
+      occasion,
+      forMen,
+      style_type,
+      color,
+      img_url,
+      description,
+    } = req.body;
 
-    // Perform any additional validation or processing as needed
-
-    // Save the garment data to the database
     const newGarment = await prisma.clothing_Item.create({
       data: {
-        garmentType,
-        weatherCompatibility,
-        styleType,
-        color,
+        garment_type,
+        weather_compatability,
         occasion,
-        gender,
+        style_type,
+        color,
+        img_url,
+        description,
+        forMen,
       },
     });
 
@@ -30,4 +37,3 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
-

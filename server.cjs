@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const loginRoute = require('./api/login.cjs');
 const registerRoute = require('./api/register.cjs');
 const garmentRoute = require('./api/garments.cjs');
+const cors = require('cors');
 const UserPrefForm = require('./api/userPreferences.cjs');
 const garmentUploadRoute = require('./api/garmentUpload.cjs');
 
@@ -17,7 +17,9 @@ app.use(cors({
   origin: 'http://localhost:5173',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
+  optionsSuccessStatus: 204, // for preflight requests
 }));
+
 
 app.use(bodyParser.json());
 
@@ -26,6 +28,7 @@ app.use('/register', registerRoute);
 app.use('/userprefform', UserPrefForm);
 app.use('/garments', garmentRoute);
 app.use('/garment_upload', garmentUploadRoute);
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

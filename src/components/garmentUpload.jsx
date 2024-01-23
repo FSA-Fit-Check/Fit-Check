@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 const GarmentUploadForm = () => {
   const [formInput, setFormInput] = useState({
-    garmentType: "",
-    weatherCompatibility: "",
-    styleType: "",
-    color: "",
+    garment_type: "",
+    weather_compatability: "",
     occasion: "",
-    gender: ""
+    style_type: "",
+    color: "",
+    img_url: "",
+    description: "",
+    forMen: true,
   });
 
   const [responseMessage, setResponseMessage] = useState("");
@@ -34,7 +36,6 @@ const GarmentUploadForm = () => {
       } catch (error) {
         setResponseMessage('Non-JSON response received.');
       }
-
     } catch (error) {
       setResponseMessage(`Error during upload: ${error.message}`);
       console.error('Error during upload:', error);
@@ -53,8 +54,8 @@ const GarmentUploadForm = () => {
           Garment Type:
           <select
             name="Garment Type"
-            value={formInput.garmentType}
-            onChange={(e) => handleInputChange("garmentType", e.target.value)}>
+            value={formInput.garment_type}
+            onChange={(e) => handleInputChange("garment_type", e.target.value)}>
             <option value="choose">Choose One</option>
             <option value="shirt">Shirts</option>
             <option value="blouse">Blouses</option>
@@ -69,9 +70,9 @@ const GarmentUploadForm = () => {
         <label>
           Weather Compatibility:
           <select
-            name="Weather Compatibility"
-            value={formInput.weatherCompatibility}
-            onChange={(e) => handleInputChange("weatherCompatibility", e.target.value)}>
+            name="Weather Compatability"
+            value={formInput.weather_compatability}
+            onChange={(e) => handleInputChange("weather_compatability", e.target.value)}>
             <option value="choose">Please Choose One</option>
             <option value="fall">Fall</option>
             <option value="spring">Spring</option>
@@ -83,8 +84,8 @@ const GarmentUploadForm = () => {
           Style Type:
           <select
             name="Style Type"
-            value={formInput.styleType}
-            onChange={(e) => handleInputChange("styleType", e.target.value)}>
+            value={formInput.style_type}
+            onChange={(e) => handleInputChange("style_type", e.target.value)}>
             <option value="choose">Please Choose One</option>
             <option value="athleisure">Athleisure</option>
             <option value="business">Business</option>
@@ -132,8 +133,8 @@ const GarmentUploadForm = () => {
           <input
             type="text"
             name="Gender"
-            value={formInput.gender}
-            onChange={(e) => handleInputChange("gender", e.target.value)} />
+            value={formInput.forMen}
+            onChange={(e) => handleInputChange("forMen", e.target.value)} />
         </label>
         <br />
         <button type="submit">Upload</button>
