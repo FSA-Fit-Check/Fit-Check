@@ -1,4 +1,4 @@
-// ./api/register.js
+// /register.cjs
 const express = require('express');
 const router = express.Router();
 
@@ -44,8 +44,8 @@ router.post('/', async(req, res) => {
         password: hashedPassword,
       }
     });
-
-    res.json({newUser});
+    // Include userId in the response
+    res.json({ ok: true, userId: newUser.id });
   }
   catch (error) {
     res.status(500).json({ error: error.message });

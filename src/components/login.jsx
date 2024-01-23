@@ -1,7 +1,9 @@
+// login.jsx
+
 import React, { useState } from 'react';
 import '../output.css';
 
-const Login = () => {
+const Login = ({ setUserId }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState(null);
@@ -22,27 +24,25 @@ const Login = () => {
       });
 
       const data = await response.json();
-        console.log(data);
+      console.log(data);
+
       if (data.success) {
-        if (data.token) {
-        setResponseMessage(`Login successful!`);
-        // Perform any actions for successful login, e.g., redirect to another page
+        if (data.token && data.userId) {
+          setResponseMessage(`Login successful!`);
+          document.cookie = `token=${data.token}; path=/; secure; samesite=strict`;
+          setUserId(data.userId); 
+        } else {
+          setResponseMessage(`Token not received..`);
+        }
+      } else if (data.message === 'Invalid credentials') {
+        setResponseMessage(`Login failed. Invalid credentials.`);
       } else {
-        setResponseMessage(`Token not received..`);
-        // Handle unsuccessful login, e.g., show an error message
+        setResponseMessage(`Login failed due to an unknown error.`);
       }
-    } else if (data.message === 'Invalid credentials') {
-      setResponseMessage(`Login failed. Invalid credentials.`);
-      // Handle unsuccessful login, e.g., show an error message
-    } else {
-      setResponseMessage(`Login failed due to an unknown error.`);
-      // Handle other errors, e.g., network issues or server errors
+    } catch (error) {
+      setResponseMessage(`Error during login: ${error}`);
+      console.error('Error during login:', error);
     }
-  } catch (error) {
-    setResponseMessage(`Error during login: ${error}`);
-    console.error('Error during login:', error);
-    // Handle other errors, e.g., network issues
-  }
   };
 
   return (
