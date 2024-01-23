@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 
-const Registration = () => {
+const Registration = ({setUserId}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -24,8 +24,9 @@ const Registration = () => {
 
       const result = await response.json();
 
-      if (result.ok) {
+      if (result.ok && result.newUser && result.newUser.id) {
         setResponseMessage(`Registration successful!`);
+        setUserId(result.newUser.id);
         return;
       } else {
         setResponseMessage(result.error);

@@ -1,3 +1,4 @@
+// login.cjs
 const express = require('express');
 const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
@@ -25,12 +26,11 @@ router.post('/', async (req, res) => {
       if (passwordsMatch) {
         // TODO: Will probably need to give the user their token here.
             const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET, { expiresIn: '1h' });
-            console.log('Generated Token:', token); // Add this line for debugging
-            res.json({ success: true, message: 'Login successful!', token });
+            // console.log('Generated Token:', token); // Add this line for debugging
+            res.json({ success: true, message: 'Login successful!', token, userId: user.id });
       } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
       }
-
     } else {
       res.status(401).json({ success: false, message: 'No user of that username exists.' });
     }
