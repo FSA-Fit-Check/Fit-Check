@@ -27,14 +27,12 @@ const WeatherContent = () => {
   };
 
   return (
-    <div className='containerOne
-      text-whitecream
-    bg-black rounded-xl p-3 drop-shadow-lg border-2 border-whitecream
-      flex flex-col gap-3
-    '>
+    <div 
+    className='containerOne panel'
+    >
       
       <div className='flex flex-row
-      justify-center items-center gap-2
+      justify-center items-center gap-2 fullwidth
       '>
         <img src="/weather_icon.svg"
         className='icon'></img>

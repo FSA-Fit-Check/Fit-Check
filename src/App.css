@@ -33,6 +33,30 @@
   }
 }
 
+.random-fit-section {
+  width: 100%;
+  align-items: center;
+}
+.fullwidth {
+  width: 100%;
+}
+
+.panel {
+  background: #0a091a;
+  color: #fff4e8;
+
+  border-radius: 12px;
+  border: 2px solid #fff4e8;
+
+  padding: 12px;
+  gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .garment-grid {
   display: grid;
