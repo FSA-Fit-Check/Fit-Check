@@ -22,19 +22,27 @@ const Login = () => {
       });
 
       const data = await response.json();
-
+        console.log(data);
       if (data.success) {
+        if (data.token) {
         setResponseMessage(`Login successful!`);
         // Perform any actions for successful login, e.g., redirect to another page
       } else {
-        setResponseMessage(`Login failed. Invalid credentials.`);
+        setResponseMessage(`Token not received..`);
         // Handle unsuccessful login, e.g., show an error message
       }
-    } catch (error) {
-      setResponseMessage(`Error during login: ${error}`);
-      console.error('Error during login:', error);
-      // Handle other errors, e.g., network issues
+    } else if (data.message === 'Invalid credentials') {
+      setResponseMessage(`Login failed. Invalid credentials.`);
+      // Handle unsuccessful login, e.g., show an error message
+    } else {
+      setResponseMessage(`Login failed due to an unknown error.`);
+      // Handle other errors, e.g., network issues or server errors
     }
+  } catch (error) {
+    setResponseMessage(`Error during login: ${error}`);
+    console.error('Error during login:', error);
+    // Handle other errors, e.g., network issues
+  }
   };
 
   return (
