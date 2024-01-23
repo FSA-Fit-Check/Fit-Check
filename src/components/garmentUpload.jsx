@@ -136,6 +136,21 @@ const GarmentUploadForm = () => {
             value={formInput.forMen}
             onChange={(e) => handleInputChange("forMen", e.target.value)} />
         </label>
+        <label>
+          Image URL:
+          <input
+            type="text"
+            name="img_url"
+            value={formInput.img_url}
+            onChange={(e) => handleInputChange("img_url", e.target.value)} />
+        </label>
+        <label>
+          Description:
+          <textarea
+            name="description"
+            value={formInput.description}
+            onChange={(e) => handleInputChange("description", e.target.value)} />
+        </label>
         <br />
         <button type="submit">Upload</button>
       </form>
