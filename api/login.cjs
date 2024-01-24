@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
+const jwt = require('jsonwebtoken');
 const bcrypt = require('./bcrypt.cjs');
+require('dotenv').config(); 
 
 router.post('/', async (req, res) => {
   try {
@@ -24,8 +24,9 @@ router.post('/', async (req, res) => {
       
       if (passwordsMatch) {
         // TODO: Will probably need to give the user their token here.
-
-        res.json({ success: true, message: 'Login successful!' });
+            const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET, { expiresIn: '1h' });
+            console.log('Generated Token:', token); // Add this line for debugging
+            res.json({ success: true, message: 'Login successful!', token });
       } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
       }
