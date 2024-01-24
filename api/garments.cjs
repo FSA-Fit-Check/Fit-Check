@@ -31,6 +31,8 @@ router.get('/random', async (req, res) => {
       ],
     },
   });
+  const randTop = tops[Math.floor(Math.random() * tops.length)];
+
   const bottoms = await prisma.clothing_Item.findMany({
     where: {
       OR: [
@@ -53,10 +55,9 @@ router.get('/random', async (req, res) => {
           garment_type: 'skirt'
         },
       ],
+      forMen: randTop.forMen,
     },
   });
-
-  const randTop = tops[Math.floor(Math.random() * tops.length)];
   const randBottom = bottoms[Math.floor(Math.random() * bottoms.length)];
 
   // Outfit should be two pieces, unless it's a dress.
