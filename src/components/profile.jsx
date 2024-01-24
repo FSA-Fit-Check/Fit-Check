@@ -21,19 +21,21 @@ const Profile = ({ userId }) => {
         console.error("Invalid userId:", userId);
         return;
       }
-      const response = await fetch(
-        `http://localhost:3000/favorites/${numericUserId}`
-      );
-      console.log(response);
 
+      const response = await fetch(`http://localhost:3000/favorites/${numericUserId}`);
+      console.log(response);
+      
       if (!response.ok) {
         throw new Error(`Error fetching favorites. Status: ${response.status}`);
       }
+      
       const userFavorites = await response.json();
+      
       setFavorites(userFavorites);
+      
       console.log(userFavorites);
     } catch (error) {
-      console.error("Error fetching favorites:", error);
+      console.error('Error fetching favorites:', error);
     }
   };
 
@@ -47,10 +49,7 @@ const Profile = ({ userId }) => {
           <div>
             {favorites.map((favorite) => (
               <div key={favorite.id}>
-                <img
-                  src={favorite.clothingItem.img_url}
-                  alt={favorite.clothingItem.description}
-                />
+                <img src={favorite.clothingItem.img_url} alt={favorite.clothingItem.description} />
                 <p>{favorite.clothingItem.description}</p>
               </div>
             ))}
