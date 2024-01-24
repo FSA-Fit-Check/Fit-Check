@@ -18,17 +18,21 @@ const Profile = ({ userId }) => {
       const numericUserId = parseInt(userId);
 
       if (isNaN(numericUserId)) {
-        console.error('Invalid userId:', userId);
+        console.error("Invalid userId:", userId);
         return;
       }
+
       const response = await fetch(`http://localhost:3000/favorites/${numericUserId}`);
       console.log(response);
       
       if (!response.ok) {
         throw new Error(`Error fetching favorites. Status: ${response.status}`);
       }
+      
       const userFavorites = await response.json();
+      
       setFavorites(userFavorites);
+      
       console.log(userFavorites);
     } catch (error) {
       console.error('Error fetching favorites:', error);
@@ -36,7 +40,7 @@ const Profile = ({ userId }) => {
   };
 
   return (
-    <div className='flex flex-col gap-3 text-whitecream'>
+    <div className="flex flex-col gap-3 text-whitecream">
       <h1>Hello, User!</h1>
       <Link to="/garmentUpload">Upload Garments for Your Wardrobe Here!</Link>
       <div>
