@@ -1,3 +1,5 @@
+// server.cjs
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const loginRoute = require('./api/login.cjs');
@@ -5,6 +7,7 @@ const registerRoute = require('./api/register.cjs');
 const garmentRoute = require('./api/garments.cjs');
 const cors = require('cors');
 const UserPrefForm = require('./api/userPreferences.cjs');
+const favoritesRoute = require('./api/favorites.cjs')
 
 const app = express();
 const port = 3000;
@@ -24,6 +27,8 @@ app.use('/login', loginRoute)
 app.use('/register', registerRoute)
 app.use('/userprefform', UserPrefForm);
 app.use('/garments', garmentRoute)
+app.use('/favorites', favoritesRoute);
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
