@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import '../output.css'
 
 const WeatherContent = () => {
@@ -9,7 +9,7 @@ const WeatherContent = () => {
     try {
       let response = await fetch(`https://api.weather.gov/gridpoints/CAE/27,33/forecast`); // REPLACE ENDPOINT
       const data = await response.json();
-      console.log('Weather API Response:', data); // Log the API response
+      //console.log('Weather API Response:', data); // Log the API response
       setWeatherData(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -25,6 +25,11 @@ const WeatherContent = () => {
       console.error('Error fetching weather data:', error);
     }
   };
+
+  // Weather data should be fetched automatically on page load:
+  useEffect(() => {
+    handleWeatherButtonClick();
+  }, []);
 
   return (
     <div 
@@ -50,7 +55,7 @@ const WeatherContent = () => {
       <button
       onClick={handleWeatherButtonClick}
       className="rounded-md"
-      >Get weather</button>
+      >Refresh weather</button>
 
     </div>
   );

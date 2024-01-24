@@ -47,7 +47,7 @@ const GarmentUploadForm = () => {
   };
 
   return (
-    <div>
+    <div className="panel">
       <h2>Garment Upload Form</h2>
       <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
         <label>

@@ -39,7 +39,7 @@ const UserPrefForm = () => {
       console.error('Error during form submission:', error);
     }};
       
-  return (
+  return (<>
     <form onSubmit={handleSubmit}
     className='panel'>
       <h1
@@ -161,6 +161,7 @@ const UserPrefForm = () => {
         onChange={(e) => setFormInput({ ...formInput, forMen: e.target.checked })}/>
       </label>
       <button type="submit">Submit</button>
+    </form>
 
   {
     searchResults.length > 0 ? (
@@ -185,12 +186,12 @@ const UserPrefForm = () => {
               title={result.description}
               className='garment-img'/>
               <div className='garment-specification'>
-                <p><strong>Garment Type:</strong> {result.garment_type},</p>
-                <p><strong>Weather Compatibility:</strong> {result.weather_compatability},</p>
-                <p><strong>Style Type:</strong> {result.style_type},</p>
-                <p><strong>Color:</strong> {result.color},</p>
-                <p><strong>Occasion:</strong> {result.occasion},</p>
-                <p><strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'},</p>
+                <p><strong>Garment Type:</strong> {result.garment_type}</p>
+                <p><strong>Weather Compatibility:</strong> {result.weather_compatability}</p>
+                <p><strong>Style Type:</strong> {result.style_type}</p>
+                <p><strong>Color:</strong> {result.color}</p>
+                <p><strong>Occasion:</strong> {result.occasion}</p>
+                <p><strong>For Men:</strong> {result.forMen ? 'Yes' : 'No'}</p>
                 <p><strong>Description:</strong> {result.description}</p>
               </div>
             </div>
@@ -202,7 +203,7 @@ const UserPrefForm = () => {
         <></>
       )
     }
-  </form>);
+  </>);
 }
 
 export default UserPrefForm;
