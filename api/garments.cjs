@@ -59,7 +59,11 @@ router.get('/random', async (req, res) => {
   const randTop = tops[Math.floor(Math.random() * tops.length)];
   const randBottom = bottoms[Math.floor(Math.random() * bottoms.length)];
 
-  res.send([randTop, randBottom]);
+  // Outfit should be two pieces, unless it's a dress.
+  const outfit = (randTop.garment_type !== 'dress')
+   ? [randTop, randBottom] : [randTop];
+
+  res.send(outfit);
 });
 
 module.exports = router;
