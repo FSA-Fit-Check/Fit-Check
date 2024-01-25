@@ -165,6 +165,19 @@ const GarmentUploadForm = () => {
         <button type="submit">Upload</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
+       
+       <p>
+        Want more professional looking photos of your garments? 
+        Use the free image background remover tool. 
+         </p>
+       {/* button link to background remover */}
+        <button
+        onClick={() => {
+          window.open ("https://www.remove.bg/upload", "blank");
+        }}
+      >
+       Remove Image background For Free!
+      </button>
     </div>
   );
 };
