@@ -167,8 +167,12 @@ const GarmentUploadForm = () => {
       {responseMessage && <p>{responseMessage}</p>}
        
        <p>
-        Want more professional looking photos of your garments? 
-        Use the free image background remover tool. 
+         <strong>Want more professional looking photos of your garments?</strong>
+        Step 1: Click the link below to use the free image background remover tool.
+        Step 2: On the wesbite, simply click their upload button.
+        Step 3: After saving your new image, Upload it Here.
+        Step 4: All done!
+
          </p>
        {/* button link to background remover */}
         <button
