@@ -7,6 +7,7 @@
     "seed": "npx prisma migrate reset && node seed.js ",
     "dev": "vite",
     "start:dev": "node ./server.cjs",
+    "start": "NODE_ENV=production node server.cjs",
     "build": "vite build",
     "build-tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
