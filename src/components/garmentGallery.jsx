@@ -9,7 +9,7 @@ const GarmentGallery = () => {
   useEffect(() => {
     const getGarments = async() => {
       try {
-        const response = await fetch('/garments/random');
+        const response = await fetch('http://localhost:3000/garments/random');
         const result = await response.json();
   
         if (response.ok) {
