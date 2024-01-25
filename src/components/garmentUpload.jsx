@@ -136,15 +136,6 @@ const GarmentUploadForm = () => {
           </select>
         </label>
         <label>
-          Gender:
-          <input
-            type="text"
-            name="Gender"
-            value={formInput.forMen}
-            onChange={(e) => handleInputChange("forMen", e.target.value)}
-          />
-        </label>
-        <label>
           Image URL:
           <input
             type="text"
@@ -160,6 +151,13 @@ const GarmentUploadForm = () => {
             value={formInput.description}
             onChange={(e) => handleInputChange("description", e.target.value)}
           />
+        </label>
+        <label>
+        For men: 
+        <input type="checkbox"
+        name="Gender"
+        value={formInput.forMen}
+        onChange={(e) => setFormInput({ ...formInput, forMen: e.target.checked })}/>
         </label>
         <br />
         <button type="submit">Upload</button>
