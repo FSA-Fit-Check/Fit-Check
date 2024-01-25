@@ -43,9 +43,12 @@ const WeatherContent = () => {
           className="rounded-md"
         >
           <option value="default" disabled>Select Location</option>
-          <option value="CAE/27,33">Location 1</option>
-          <option value="XXX/YY,ZZ">Location 2</option>
-          <option value="ABC/12,34">Location 3</option>
+          <option value="FFC/46,92">Atlanta</option>
+          <option value="PHI/66,112">New York</option>
+          <option value="LOT/63,80">Chicago</option>
+          <option value="BOU/50,59">Denver</option>
+          <option value="SGX/70,19">San Diego</option>
+          <option value="SEW/116,61">Seattle</option>
         </select>
       </div>
 
