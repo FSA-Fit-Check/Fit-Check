@@ -45,7 +45,7 @@ router.post('/', async(req, res) => {
       }
     });
     // Include userId in the response
-    res.json({ ok: true, userId: newUser.id });
+    res.json({ ok: true, newUser });
   }
   catch (error) {
     res.status(500).json({ error: error.message });
