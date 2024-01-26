@@ -4,13 +4,34 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Profile = ({ userId }) => {
-  // console.log(userId);
   const [favorites, setFavorites] = useState([]);
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     // Fetch and set user's favorites
     fetchFavorites();
   }, [userId]); // re-fetch when the userId changes
+
+  useEffect(() => {
+    fetchMe();
+  }, []); 
+
+  
+  const fetchMe = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/me', {
+        method: 'GET',
+        headers: {
+          'Authorization': window.localStorage.getItem('TOKEN')
+        }
+
+      });
+      const {user} = await response.json()
+      setUser(user)
+    } catch(error) {
+          console.log(error);
+    }
+  }
 
   const fetchFavorites = async () => {
     try {
@@ -41,7 +62,8 @@ const Profile = ({ userId }) => {
 
   return (
     <div className="flex flex-col gap-3 text-whitecream">
-      <h1>Hello, User!</h1>
+      {user.username && <h1>Hello, {user.username}!</h1>}
+      
       <Link to="/garmentUpload">Upload Garments for Your Wardrobe Here!</Link>
       <div>
         <h2>Your Favorite Clothing Items</h2>

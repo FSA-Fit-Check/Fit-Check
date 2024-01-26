@@ -9,7 +9,7 @@ const cors = require('cors');
 const UserPrefForm = require('./api/userPreferences.cjs');
 const garmentUploadRoute = require('./api/garmentUpload.cjs');
 const favoritesRoute = require('./api/favorites.cjs')
-
+const userRouter = require('./api/user.cjs')
 
 
 const app = express();
@@ -34,7 +34,7 @@ app.use('/userprefform', UserPrefForm);
 app.use('/garments', garmentRoute);
 app.use('/garment_upload', garmentUploadRoute);
 app.use('/favorites', favoritesRoute);
-
+app.use('/me', userRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
