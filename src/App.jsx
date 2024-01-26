@@ -25,7 +25,7 @@ function App() {
   
   return (
     <>
-      <Navbar />
+      <Navbar userId={userId} />
       <Routes>
         <Route path="/" element={<Home userId={userId}/>} />
         <Route path="/login" element={<Login setUserId={handleSetUserId}/>} />

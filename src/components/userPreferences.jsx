@@ -16,6 +16,8 @@ const UserPrefForm = ({ userId }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   const addToFavorites = async(garmentID) => {
+    if (!garmentID || !userId) return;
+
     try {
       const response = await fetch(
         `http://localhost:3000/favorites/${userId}/add`,

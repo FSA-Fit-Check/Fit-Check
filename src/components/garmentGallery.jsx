@@ -6,6 +6,8 @@ const GarmentGallery = ({ userId }) => {
   const [randomSeed, setRandomSeed] = useState(null);
 
   const addToFavorites = async(garmentID) => {
+    if (!garmentID || !userId) return;
+
     try {
       const response = await fetch(
         `http://localhost:3000/favorites/${userId}/add`,
