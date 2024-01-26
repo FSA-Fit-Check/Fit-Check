@@ -24,7 +24,7 @@ const Login = ({ setUserId }) => {
       });
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       if (data.success) {
         if (data.token && data.userId && data.username ) {

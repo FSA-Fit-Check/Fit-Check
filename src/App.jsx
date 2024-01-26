@@ -27,9 +27,9 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setUserId={handleSetUserId} />} />
-        <Route path="/registration" element={<Registration setUserId={handleSetUserId} />} />
+        <Route path="/" element={<Home userId={userId}/>} />
+        <Route path="/login" element={<Login setUserId={handleSetUserId}/>} />
+        <Route path="/registration" element={<Registration setUserId={handleSetUserId}/>} />
         <Route path="/profile" element={<Profile userId={userId} username={username}/>} />
         <Route path="/garmentUpload" element={<GarmentUploadForm />} />
       </Routes>

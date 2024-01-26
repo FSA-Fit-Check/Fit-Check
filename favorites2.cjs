@@ -23,6 +23,14 @@ const getFaves = async (userId) => {
 // add to favorites
 const addToFaves = async (userId, clothingItemId) => {
   try {
+    const alreadyExists = prisma.favorites.findUnique({
+      where: {
+        userId: parseInt(userId), 
+        clothingItemId: parseInt(clothingItemId),
+      }
+    })
+    if (alreadyExists) throw new Error("This user has already favorited this garment.");
+
     await prisma.favorites.create({
       data: {
         userId: parseInt(userId), 
