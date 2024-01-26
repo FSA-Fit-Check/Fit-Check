@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import '../output.css';
 
 const Profile = ({ userId }) => {
   // console.log(userId);
@@ -23,7 +24,6 @@ const Profile = ({ userId }) => {
       }
 
       const response = await fetch(`http://localhost:3000/favorites/${numericUserId}`);
-      console.log(response);
       
       if (!response.ok) {
         throw new Error(`Error fetching favorites. Status: ${response.status}`);
@@ -32,8 +32,6 @@ const Profile = ({ userId }) => {
       const userFavorites = await response.json();
       
       setFavorites(userFavorites);
-      
-      console.log(userFavorites);
     } catch (error) {
       console.error('Error fetching favorites:', error);
     }
@@ -46,14 +44,22 @@ const Profile = ({ userId }) => {
       <div>
         <h2>Your Favorite Clothing Items</h2>
         {favorites.length > 0 ? (
-          <div>
+          <section className='garment-grid'>
             {favorites.map((favorite) => (
-              <div key={favorite.id}>
-                <img src={favorite.clothingItem.img_url} alt={favorite.clothingItem.description} />
-                <p>{favorite.clothingItem.description}</p>
+              <div key={favorite.id} className='split-container'>
+                <img 
+                  src={favorite.clothingItem.img_url}
+                  alt={favorite.clothingItem.description}
+                  className="garment-img"
+                  />
+                <div
+                className='garment-specification'
+                >
+                  <p>{favorite.clothingItem.description}</p>
+                </div>
               </div>
             ))}
-          </div>
+          </section>
         ) : (
           <p>No favorite clothing items yet.</p>
         )}
