@@ -27,10 +27,13 @@ const Login = ({ setUserId }) => {
       // console.log(data);
 
       if (data.success) {
-        if (data.token && data.userId) {
+        if (data.token && data.userId && data.username ) {
           setResponseMessage(`Login successful!`);
-          document.cookie = `token=${data.token}; path=/; secure; samesite=strict`;
-          setUserId(data.userId); 
+          // document.cookie = `token=${data.token}; path=/; secure; samesite=strict`;
+          window.localStorage.setItem('TOKEN', data.token);
+          setUserId(data.userId);
+          setUsername(data.username);
+          console.log(data.username);
         } else {
           setResponseMessage(`Token not received..`);
         }
