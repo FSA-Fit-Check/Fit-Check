@@ -22,6 +22,14 @@ function App() {
     // go to profile page after setting userId
     navigate('/profile');
   };
+
+  const logOut = () => {
+    navigate('/');
+    setUserId(null);
+    setUsername('');
+    window.localStorage.removeItem('TOKEN');
+    location.reload();
+  }
   
   return (
     <>
@@ -30,7 +38,7 @@ function App() {
         <Route path="/" element={<Home userId={userId}/>} />
         <Route path="/login" element={<Login setUserId={handleSetUserId}/>} />
         <Route path="/registration" element={<Registration setUserId={handleSetUserId}/>} />
-        <Route path="/profile" element={<Profile userId={userId} username={username}/>} />
+        <Route path="/profile" element={<Profile userId={userId} username={username} logOut={logOut}/>} />
         <Route path="/garmentUpload" element={<GarmentUploadForm />} />
       </Routes>
       <br />

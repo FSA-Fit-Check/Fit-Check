@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../output.css';
 
-const Profile = ({ userId }) => {
+const Profile = ({ userId, username, logOut }) => {
   const [favorites, setFavorites] = useState([]);
   const [user, setUser] = useState({})
 
@@ -62,7 +62,12 @@ const Profile = ({ userId }) => {
     <div className="flex flex-col gap-3 text-whitecream">
       {user.username && <h1>Hello, {user.username}!</h1>}
       
+      <button 
+      onClick={() => {logOut();}}
+      >Log out</button>
+
       <Link to="/garmentUpload">Upload Garments for Your Wardrobe Here!</Link>
+
       <div>
         <h2>Your Favorite Clothing Items</h2>
         {favorites.length > 0 ? (
