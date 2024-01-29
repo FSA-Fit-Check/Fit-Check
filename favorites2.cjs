@@ -1,5 +1,5 @@
 // favorites.js
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // get favorites for user
@@ -7,7 +7,7 @@ const getFaves = async (userId) => {
   try {
     const favorites = await prisma.favorites.findMany({
       where: {
-        userId: parseInt(userId), 
+        userId: parseInt(userId),
       },
       include: {
         clothingItem: true,
@@ -15,7 +15,7 @@ const getFaves = async (userId) => {
     });
     return favorites;
   } catch (error) {
-    console.error('Error getting favorites:', error);
+    console.error("Error getting favorites:", error);
     throw error;
   }
 };
@@ -25,14 +25,16 @@ const addToFaves = async (userId, clothingItemId) => {
   try {
     await prisma.favorites.create({
       data: {
-        userId: parseInt(userId), 
+        userId: parseInt(userId),
         clothingItemId: parseInt(clothingItemId),
       },
     });
   } catch (error) {
-    console.error('Error adding to favorites:', error);
+    console.error("Error adding to favorites:", error);
     throw error;
   }
 };
 
 module.exports = { getFaves, addToFaves };
+
+//C: should this live inside of the API folder?

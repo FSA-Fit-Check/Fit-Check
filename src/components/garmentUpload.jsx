@@ -18,6 +18,7 @@ const GarmentUploadForm = () => {
     event.preventDefault();
 
     try {
+      //C: should not be hardcoded to lh 3000
       const response = await fetch("http://localhost:3000/garment_upload", {
         method: "POST",
         headers: {
@@ -48,8 +49,9 @@ const GarmentUploadForm = () => {
 
   return (
     <div className="panel">
-      <p>Here, you can upload photos of your garments to add to your virtual wardrobe!
-       ** All fields are required for proper submittal. **
+      <p>
+        Here, you can upload photos of your garments to add to your virtual
+        wardrobe! ** All fields are required for proper submittal. **
       </p>
       <h2>Garment Upload Form</h2>
       <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
@@ -165,47 +167,49 @@ const GarmentUploadForm = () => {
           />
           <br />
           <br />
-          <p>If your image isnt in the form of a URL, that's okay!
+          <p>
+            If your image isnt in the form of a URL, that's okay!
             <br />
             With the link below, you can create one or many
             <br />
             image URL's in one click!
           </p>
-            <br />
-             <button
-                onClick={() => {
-                  window.open("https://imgur.com/upload", "_blank");
-                }}
-                  >
-                Create an Image URL here!
-              </button>
+          <br />
+          <button
+            onClick={() => {
+              window.open("https://imgur.com/upload", "_blank");
+            }}
+          >
+            Create an Image URL here!
+          </button>
         </label>
         <p>
-         <strong>Want more professional looking photos of your garments?</strong>
-         <br />
-        Step 1: Click the link below to use the free image background remover tool.
-        <br />
-        Step 2: On the wesbite, simply click their upload button.
-        <br />
-        Step 3: After saving your new image, Upload it Here.
-        <br />
-        Step 4: All done!
-        <br />
-
-         </p>
-       {/* button link to background remover */}
+          <strong>
+            Want more professional looking photos of your garments?
+          </strong>
+          <br />
+          Step 1: Click the link below to use the free image background remover
+          tool.
+          <br />
+          Step 2: On the wesbite, simply click their upload button.
+          <br />
+          Step 3: After saving your new image, Upload it Here.
+          <br />
+          Step 4: All done!
+          <br />
+        </p>
+        {/* button link to background remover */}
         <button
-        onClick={() => {
-          window.open ("https://www.remove.bg/upload", "blank");
-        }}
-      >
-       Remove Image background For Free!
-      </button>
-      <br />
+          onClick={() => {
+            window.open("https://www.remove.bg/upload", "blank");
+          }}
+        >
+          Remove Image background For Free!
+        </button>
+        <br />
         <button type="submit">Upload</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
-       
     </div>
   );
 };

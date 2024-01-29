@@ -1,14 +1,15 @@
-import {React, useState, useEffect} from 'react';
-import '../output.css'
+import { React, useState, useEffect } from "react";
+import "../output.css";
 
 const GarmentGallery = ({ userId }) => {
   const [garments, setGarments] = useState([]);
   const [randomSeed, setRandomSeed] = useState(null);
 
-  const addToFavorites = async(garmentID) => {
+  const addToFavorites = async (garmentID) => {
     if (!garmentID || !userId) return;
 
     try {
+      // C: should not be hardcoded to lh 3000
       const response = await fetch(
         `http://localhost:3000/favorites/${userId}/add`,
         {
@@ -32,11 +33,12 @@ const GarmentGallery = ({ userId }) => {
   };
 
   useEffect(() => {
-    const getGarments = async() => {
+    const getGarments = async () => {
       try {
-        const response = await fetch('http://localhost:3000/garments/random');
+        // C: should not be hardcoded to lh 3000
+        const response = await fetch("http://localhost:3000/garments/random");
         const result = await response.json();
-  
+
         if (response.ok) {
           setGarments(result);
         }
@@ -46,43 +48,57 @@ const GarmentGallery = ({ userId }) => {
     };
 
     getGarments();
-  }, [randomSeed])
+  }, [randomSeed]);
 
-  return <>
-    {garments.length > 0 ? (
-      <section
-      className='
+  return (
+    <>
+      {garments.length > 0 ? (
+        <section
+          className="
       panel
       random-fit-section
-      '
-      >
-        <div className='flex flex-row
+      "
+        >
+          <div
+            className="flex flex-row
         justify-center items-center gap-2
-        '>
-          <img src="/clothing_icon.svg"
-          className='icon'></img>
-          <h1 className='text-xl text-whitecream font-serif italic fullwidth'>Pick your fit!</h1>
-        </div>
+        "
+          >
+            <img src="/clothing_icon.svg" className="icon"></img>
+            <h1 className="text-xl text-whitecream font-serif italic fullwidth">
+              Pick your fit!
+            </h1>
+          </div>
 
-        <button 
-        className="rounded-md bg-gray text-whitecream"
-        onClick={() => {setRandomSeed(Math.random)}}
-        >Randomize</button>
-        
-        {garments.map((garment) => {
-          return <img src={garment.img_url}
-          alt={garment.description}
-          title={garment.description}
-          key={`Garment ${garment.id}`}
-          className='garment-img max-w-xs'
-          onClick={() => {addToFavorites(garment.id)}}
-          ></img>
-        })}
-      </section>
-    ) : (
-      <p>...</p>
-    )}
-  </>
-}
+          <button
+            className="rounded-md bg-gray text-whitecream"
+            onClick={() => {
+              setRandomSeed(Math.random);
+            }}
+          >
+            Randomize
+          </button>
+
+          {garments.map((garment) => {
+            return (
+              <img
+                src={garment.img_url}
+                alt={garment.description}
+                title={garment.description}
+                key={`Garment ${garment.id}`}
+                className="garment-img max-w-xs"
+                onClick={() => {
+                  addToFavorites(garment.id);
+                }}
+              ></img>
+            );
+          })}
+        </section>
+      ) : (
+        <p>...</p>
+      )}
+    </>
+  );
+};
 
 export default GarmentGallery;

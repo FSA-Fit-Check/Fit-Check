@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './outfit.css';
+import React, { useState, useEffect } from "react";
+import "./outfit.css";
 
 const Outfit = () => {
   const [garmentTypes, setGarmentTypes] = useState([]);
@@ -34,12 +34,19 @@ const Outfit = () => {
     },
   ];
 
-  const uniqueGarmentTypes = Array.from(new Set(mockOutfits.map(outfit => outfit.garmentType)));
+  // C: I like the use of a Set here
+  const uniqueGarmentTypes = Array.from(
+    new Set(mockOutfits.map((outfit) => outfit.garmentType))
+  );
 
   const extractOutfitImages = (garmentType) => {
     return mockOutfits
-      .filter(outfit => !garmentType || outfit.garmentType === garmentType)
-      .map((outfit, index) => ({ garmentType: outfit.garmentType, imgUrl: outfit.image, id: index + 1 }));
+      .filter((outfit) => !garmentType || outfit.garmentType === garmentType)
+      .map((outfit, index) => ({
+        garmentType: outfit.garmentType,
+        imgUrl: outfit.image,
+        id: index + 1,
+      }));
   };
 
   useEffect(() => {
@@ -55,7 +62,9 @@ const Outfit = () => {
 
   const handleGarmentTypeClick = (event) => {
     const clickedGarmentType = event.currentTarget.textContent;
-    setSelectedGarmentType((prevGarmentType) => (prevGarmentType === clickedGarmentType ? null : clickedGarmentType));
+    setSelectedGarmentType((prevGarmentType) =>
+      prevGarmentType === clickedGarmentType ? null : clickedGarmentType
+    );
   };
 
   return (
@@ -70,7 +79,9 @@ const Outfit = () => {
               <li
                 key={garmentType}
                 onClick={handleGarmentTypeClick}
-                className={selectedGarmentType === garmentType ? 'selected-category' : ''}
+                className={
+                  selectedGarmentType === garmentType ? "selected-category" : ""
+                }
               >
                 {garmentType}
               </li>
@@ -79,13 +90,19 @@ const Outfit = () => {
         </ul>
       </div>
       <div className="images-container">
-        <h2>{selectedGarmentType ? `${selectedGarmentType} Images` : 'All Images'}</h2>
+        <h2>
+          {selectedGarmentType ? `${selectedGarmentType} Images` : "All Images"}
+        </h2>
         <div className="outfit-images">
           {loading ? (
             <p>Loading images...</p>
           ) : (
             outfitImages.map((image) => (
-              <img key={image.id} src={image.imgUrl} alt={`Outfit ${image.id}`} />
+              <img
+                key={image.id}
+                src={image.imgUrl}
+                alt={`Outfit ${image.id}`}
+              />
             ))
           )}
         </div>
