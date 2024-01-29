@@ -1,6 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import '../output.css'
 import axios from 'axios';
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
+
 
 const GarmentGallery = ({ userId }) => {
   const [garments, setGarments] = useState([]);
@@ -35,16 +37,16 @@ const GarmentGallery = ({ userId }) => {
   useEffect(() => {
     const getGarments = async() => {
       try {
-        // const response = await fetch('/garments/random');
-        // const result = await response.json();
+        const response = await fetch(`${baseURL}/garments/random`);
+        const result = await response.json();
   
-        // if (response.ok) {
-        //   setGarments(result);
-        // }
+        if (response.ok) {
+          setGarments(result);
+        }
 
-        const data = await axios.get('http://localhost:3000/garments/random');
-        console.log(data);
-        setGarments(data);
+        // const data = await axios.get('http://localhost:3000/garments/random');
+        // console.log(data);
+        // setGarments(data);
       } catch (error) {
         throw error;
       }
