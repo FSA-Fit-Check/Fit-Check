@@ -1,15 +1,14 @@
-import { React, useEffect, useState } from 'react';
-import '../output.css'
+import React, { useEffect, useState } from 'react';
+import '../output.css';
 
 const WeatherContent = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState("default");
 
-  // Function to fetch weather data from the API
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (location) => {
     try {
-      let response = await fetch(`https://api.weather.gov/gridpoints/CAE/27,33/forecast`); // REPLACE ENDPOINT
+      let response = await fetch(`https://api.weather.gov/gridpoints/${location}/forecast`);
       const data = await response.json();
-      //console.log('Weather API Response:', data); // Log the API response
       setWeatherData(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -17,33 +16,41 @@ const WeatherContent = () => {
     }
   };
 
-  // Function to handle button click and fetch weather data
   const handleWeatherButtonClick = async () => {
     try {
-      await fetchWeatherData(); // Fetch weather data on button click
+      if (selectedLocation !== "default") {
+        await fetchWeatherData(selectedLocation);
+      } else {
+        console.warn('Please select a location.');
+      }
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
   };
 
-  // Weather data should be fetched automatically on page load:
   useEffect(() => {
-    handleWeatherButtonClick();
+    // Remove automatic fetch on page load
   }, []);
 
   return (
-    <div 
-    className='containerOne panel'
-    >
-      
-      <div className='flex flex-row
-      justify-center items-center gap-2 fullwidth
-      '>
-        <img src="/weather_icon.svg"
-        className='icon'></img>
+    <div className='containerOne panel'>
+      <div className='flex flex-row justify-center items-center gap-2 fullwidth'>
+        <img src="/weather_icon.svg" className='icon' alt="Weather Icon"></img>
         <p className='text-xl font-serif italic'>Weather Content</p>
+        <select
+          value={selectedLocation}
+          onChange={(e) => setSelectedLocation(e.target.value)}
+          className="rounded-md"
+        >
+          <option value="default" disabled>Select Location</option>
+          <option value="FFC/46,92">Atlanta</option>
+          <option value="PHI/66,112">New York</option>
+          <option value="LOT/63,80">Chicago</option>
+          <option value="BOU/50,59">Denver</option>
+          <option value="SGX/70,19">San Diego</option>
+          <option value="SEW/116,61">Seattle</option>
+        </select>
       </div>
-      
 
       {weatherData && (
         <div>
@@ -52,11 +59,9 @@ const WeatherContent = () => {
         </div>
       )}
 
-      <button
-      onClick={handleWeatherButtonClick}
-      className="rounded-md"
-      >Refresh weather</button>
-
+      <button onClick={handleWeatherButtonClick} className="rounded-md">
+        Refresh weather
+      </button>
     </div>
   );
 }
