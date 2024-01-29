@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import '../output.css'
+import axios from 'axios';
 
 const GarmentGallery = ({ userId }) => {
   const [garments, setGarments] = useState([]);
@@ -34,12 +35,16 @@ const GarmentGallery = ({ userId }) => {
   useEffect(() => {
     const getGarments = async() => {
       try {
-        const response = await fetch('http://localhost:3000/garments/random');
-        const result = await response.json();
+        // const response = await fetch('/garments/random');
+        // const result = await response.json();
   
-        if (response.ok) {
-          setGarments(result);
-        }
+        // if (response.ok) {
+        //   setGarments(result);
+        // }
+
+        const data = await axios.get('http://localhost:3000/garments/random');
+        console.log(data);
+        setGarments(data);
       } catch (error) {
         throw error;
       }

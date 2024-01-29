@@ -66,7 +66,7 @@ const UserPrefForm = ({ userId }) => {
     }};
       
   return (<>
-    <form onSubmit={handleSubmit}
+    <form onSubmit={(event) => handleSubmit(event)}
     className='panel'>
       <h1
       className='text-xl font-serif italic'
