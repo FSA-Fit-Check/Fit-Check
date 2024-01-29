@@ -3,7 +3,7 @@ import {React, useState} from 'react';
 const Registration = ({setUserId}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('default@default.com');
   const [responseMessage, setResponseMessage] = useState(null);
 
   const handleSubmit = async(event) => {
@@ -25,8 +25,24 @@ const Registration = ({setUserId}) => {
       const result = await response.json();
 
       if (result.ok && result.newUser && result.newUser.id) {
+        const loginResponse = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+        const loginResult = await loginResponse.json();
+        if (loginResponse.ok && loginResult.token) {
+          window.localStorage.setItem('TOKEN', loginResult.token);
+        }
+
         setResponseMessage(`Registration successful!`);
-        setUserId(result.newUser.id);
+        setUserId(result.newUser.id, result.newUser.username);
+        setUsername(result.newUser.username);
         return;
       } else {
         setResponseMessage(result.error);

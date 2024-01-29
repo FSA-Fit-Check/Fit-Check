@@ -3,7 +3,7 @@ import '../output.css';
 import { Link } from 'react-router-dom';
 import '../output.css';
 
-const Navbar = () => {
+const Navbar = ({ userId }) => {
   return (
     <nav className='
     p-5 pr-8 pl-8 m-2 
@@ -14,7 +14,11 @@ const Navbar = () => {
       <Link to="/" className='hover:animate-pulse'>Home</Link>
       <Link to="/login" className='hover:animate-pulse'>Login</Link>
       <Link to="/registration" className='hover:animate-pulse'>Registration</Link>
-      <Link to="/profile" className='hover:animate-pulse'>Profile</Link>
+      {
+        userId ? 
+        <Link to="/profile" className='hover:animate-pulse'>Profile</Link>
+        : <></>
+      }
     </nav>
   );
 };

@@ -24,10 +24,9 @@ router.post('/', async (req, res) => {
       const passwordsMatch = await bcrypt.compare(password, user.password);
       
       if (passwordsMatch) {
-        // TODO: Will probably need to give the user their token here.
-            const token = jwt.sign({userId: user.id}, process.env.JWT_SECRET, { expiresIn: '1h' });
-            // console.log('Generated Token:', token); // Add this line for debugging
-            res.json({ success: true, message: 'Login successful!', token, userId: user.id });
+        const token = jwt.sign({userId: user.id, username:user.username}, process.env.JWT_SECRET, { expiresIn: '1h' });
+        // console.log('Generated Token:', token); // Add this line for debugging
+        res.json({ success: true, message: 'Login successful!', token, userId: user.id, username: user.username});
       } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
       }

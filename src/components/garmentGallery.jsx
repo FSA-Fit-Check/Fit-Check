@@ -1,10 +1,35 @@
 import {React, useState, useEffect} from 'react';
 import '../output.css'
 
-const GarmentGallery = () => {
-  
+const GarmentGallery = ({ userId }) => {
   const [garments, setGarments] = useState([]);
   const [randomSeed, setRandomSeed] = useState(null);
+
+  const addToFavorites = async(garmentID) => {
+    if (!garmentID || !userId) return;
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/favorites/${userId}/add`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            clothingItemId: garmentID,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      if (response.ok) {
+        // console.log(`Added to favorites: ${result}`);
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
 
   useEffect(() => {
     const getGarments = async() => {
@@ -50,6 +75,7 @@ const GarmentGallery = () => {
           title={garment.description}
           key={`Garment ${garment.id}`}
           className='garment-img max-w-xs'
+          onClick={() => {addToFavorites(garment.id)}}
           ></img>
         })}
       </section>

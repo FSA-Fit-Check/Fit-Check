@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UserPrefForm = () => {
+const UserPrefForm = ({ userId }) => {
   const [formInput, setFormInput] = useState({
     // name: '',
     // email: '',
@@ -14,6 +14,32 @@ const UserPrefForm = () => {
   });    
 
   const [searchResults, setSearchResults] = useState([]);
+
+  const addToFavorites = async(garmentID) => {
+    if (!garmentID || !userId) return;
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/favorites/${userId}/add`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            clothingItemId: garmentID,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      if (response.ok) {
+        // console.log(`Added to favorites: ${result}`);
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -184,7 +210,9 @@ const UserPrefForm = () => {
               <img src={result.img_url}
               alt={result.description}
               title={result.description}
-              className='garment-img'/>
+              className='garment-img'
+              onClick={() => {addToFavorites(result.id)}}
+              />
               <div className='garment-specification'>
                 <p><strong>Garment Type:</strong> {result.garment_type}</p>
                 <p><strong>Weather Compatibility:</strong> {result.weather_compatability}</p>

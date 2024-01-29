@@ -12,23 +12,33 @@ import GarmentUploadForm from './components/garmentUpload.jsx';
 
 function App() {
   const [userId, setUserId] = useState(null);
+  const [username, setUsername] = useState('');
 
   const navigate = useNavigate();
   // set userId
-  const handleSetUserId = (newUserId) => {
+  const handleSetUserId = (newUserId, newUsername) => {
     setUserId(newUserId);
+    setUsername(newUsername); // set user's username
     // go to profile page after setting userId
     navigate('/profile');
   };
+
+  const logOut = () => {
+    navigate('/');
+    setUserId(null);
+    setUsername('');
+    window.localStorage.removeItem('TOKEN');
+    location.reload();
+  }
   
   return (
     <>
-      <Navbar />
+      <Navbar userId={userId} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home userId={userId}/>} />
         <Route path="/login" element={<Login setUserId={handleSetUserId}/>} />
         <Route path="/registration" element={<Registration setUserId={handleSetUserId}/>} />
-        <Route path="/profile" element={<Profile userId={userId}/>} />
+        <Route path="/profile" element={<Profile userId={userId} username={username} logOut={logOut}/>} />
         <Route path="/garmentUpload" element={<GarmentUploadForm />} />
       </Routes>
       <br />
