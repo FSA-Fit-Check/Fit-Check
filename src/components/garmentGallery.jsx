@@ -43,10 +43,6 @@ const GarmentGallery = ({ userId }) => {
         if (response.ok) {
           setGarments(result);
         }
-
-        // const data = await axios.get('http://localhost:3000/garments/random');
-        // console.log(data);
-        // setGarments(data);
       } catch (error) {
         throw error;
       }
