@@ -16,9 +16,6 @@ const viteExpress = require('vite-express');
 const app = express();
 const port = 3000;
 
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
 // app.use(cors({
 //   origin: 'http://localhost:5173',
 //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
