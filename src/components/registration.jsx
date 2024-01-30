@@ -1,4 +1,6 @@
 import {React, useState} from 'react';
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
+
 
 const Registration = ({setUserId}) => {
   const [username, setUsername] = useState('');
@@ -10,7 +12,7 @@ const Registration = ({setUserId}) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/register', {
+      const response = await fetch(`${baseURL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ const Registration = ({setUserId}) => {
       const result = await response.json();
 
       if (result.ok && result.newUser && result.newUser.id) {
-        const loginResponse = await fetch('http://localhost:3000/login', {
+        const loginResponse = await fetch(`${baseURL}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

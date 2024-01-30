@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
 
 const GarmentUploadForm = () => {
   const [formInput, setFormInput] = useState({
@@ -18,7 +19,7 @@ const GarmentUploadForm = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/garment_upload", {
+      const response = await fetch(`${baseURL}/garment_upload`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

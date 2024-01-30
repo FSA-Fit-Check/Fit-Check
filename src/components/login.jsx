@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import '../output.css';
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
+
 
 const Login = ({ setUserId }) => {
   const [username, setUsername] = useState('');
@@ -12,7 +14,7 @@ const Login = ({ setUserId }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch(`${baseURL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

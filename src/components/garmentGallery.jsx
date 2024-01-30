@@ -1,6 +1,5 @@
 import {React, useState, useEffect} from 'react';
 import '../output.css'
-import axios from 'axios';
 const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
 
 
@@ -13,7 +12,7 @@ const GarmentGallery = ({ userId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/favorites/${userId}/add`,
+        `${baseURL}/favorites/${userId}/add`,
         {
           method: "POST",
           headers: {

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../output.css';
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
+
 
 const Profile = ({ userId, username, logOut }) => {
   const [favorites, setFavorites] = useState([]);
@@ -20,7 +22,7 @@ const Profile = ({ userId, username, logOut }) => {
   
   const fetchMe = async () => {
     try {
-      const response = await fetch('http://localhost:3000/me', {
+      const response = await fetch(`${baseURL}/me`, {
         method: 'GET',
         headers: {
           'Authorization': window.localStorage.getItem('TOKEN')
@@ -44,7 +46,7 @@ const Profile = ({ userId, username, logOut }) => {
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/favorites/${numericUserId}`);
+      const response = await fetch(`${baseURL}/favorites/${numericUserId}`);
       
       if (!response.ok) {
         throw new Error(`Error fetching favorites. Status: ${response.status}`);
