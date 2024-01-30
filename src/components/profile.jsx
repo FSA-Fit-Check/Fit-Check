@@ -9,11 +9,12 @@ const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onren
 const Profile = ({ userId, username, logOut }) => {
   const [favorites, setFavorites] = useState([]);
   const [user, setUser] = useState({})
+  const [deleteCount, setDeleteCount] = useState(0);
 
   useEffect(() => {
     // Fetch and set user's favorites
     fetchFavorites();
-  }, [userId]); // re-fetch when the userId changes
+  }, [userId, deleteCount]); // re-fetch when the userId changes, or if you delete something
 
   useEffect(() => {
     fetchMe();
@@ -60,6 +61,30 @@ const Profile = ({ userId, username, logOut }) => {
     }
   };
 
+  const deleteFavoritedItem = async(garment) => {
+    try {
+      const response = await fetch(
+        `${baseURL}/favorites/${userId}/delete`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            clothingItemId: garment.clothingItemId,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      if (response.ok) {
+        setDeleteCount(deleteCount - 1);
+      }
+    } catch (error) {
+      console.error('Error deleting from favorites:', error);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-3 text-whitecream">
       {user.username && <h1>Hello, {user.username}!</h1>}
@@ -80,6 +105,7 @@ const Profile = ({ userId, username, logOut }) => {
                   src={favorite.clothingItem.img_url}
                   alt={favorite.clothingItem.description}
                   className="garment-img"
+                  onClick={() => deleteFavoritedItem(favorite)}
                   />
                 <div
                 className='garment-specification'
