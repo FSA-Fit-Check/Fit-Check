@@ -1,5 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import '../output.css'
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
+
 
 const GarmentGallery = ({ userId }) => {
   const [garments, setGarments] = useState([]);
@@ -10,7 +12,7 @@ const GarmentGallery = ({ userId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/favorites/${userId}/add`,
+        `${baseURL}/favorites/${userId}/add`,
         {
           method: "POST",
           headers: {
@@ -34,7 +36,7 @@ const GarmentGallery = ({ userId }) => {
   useEffect(() => {
     const getGarments = async() => {
       try {
-        const response = await fetch('http://localhost:3000/garments/random');
+        const response = await fetch(`${baseURL}/garments/random`);
         const result = await response.json();
   
         if (response.ok) {

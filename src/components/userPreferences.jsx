@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
 
 const UserPrefForm = ({ userId }) => {
   const [formInput, setFormInput] = useState({
@@ -20,7 +21,7 @@ const UserPrefForm = ({ userId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/favorites/${userId}/add`,
+        `${baseURL}/favorites/${userId}/add`,
         {
           method: "POST",
           headers: {
@@ -45,7 +46,7 @@ const UserPrefForm = ({ userId }) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/userprefform', {
+      const response = await fetch(`${baseURL}/userprefform`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +67,7 @@ const UserPrefForm = ({ userId }) => {
     }};
       
   return (<>
-    <form onSubmit={handleSubmit}
+    <form onSubmit={(event) => handleSubmit(event)}
     className='panel'>
       <h1
       className='text-xl font-serif italic'
