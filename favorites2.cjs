@@ -35,4 +35,19 @@ const addToFaves = async (userId, clothingItemId) => {
   }
 };
 
-module.exports = { getFaves, addToFaves };
+// Remove from favorites
+const removeFromFaves = async (userId, clothingItemId) => {
+  try {
+    await prisma.favorites.deleteMany({
+      where: {
+        userId: parseInt(userId), 
+        clothingItemId: parseInt(clothingItemId),
+      },
+    });
+  } catch (error) {
+    console.error('Error adding to favorites:', error);
+    throw error;
+  }
+};
+
+module.exports = { getFaves, addToFaves, removeFromFaves };
