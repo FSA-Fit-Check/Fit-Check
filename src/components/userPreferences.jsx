@@ -35,7 +35,7 @@ const UserPrefForm = ({ userId }) => {
       const result = await response.json();
 
       if (response.ok) {
-        // console.log(`Added to favorites: ${result}`);
+        alert(`Garment #${garmentID} added to favorites`)
       }
     } catch (error) {
       throw error;

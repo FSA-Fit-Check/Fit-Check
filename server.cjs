@@ -9,6 +9,8 @@ const cors = require('cors');
 const UserPrefForm = require('./api/userPreferences.cjs');
 const garmentUploadRoute = require('./api/garmentUpload.cjs');
 const favoritesRoute = require('./api/favorites.cjs')
+const outfitsRoute = require('./api/outfits.cjs')
+const outfitUploadRoute = require('./api/outfitUpload.cjs')
 const userRouter = require('./api/user.cjs')
 const viteExpress = require('vite-express');
 
@@ -32,6 +34,8 @@ app.use('/userprefform', UserPrefForm);
 app.use('/garments', garmentRoute);
 app.use('/garment_upload', garmentUploadRoute);
 app.use('/favorites', favoritesRoute);
+app.use('/outfits', outfitsRoute);
+app.use('/outfitUpload', outfitUploadRoute);
 app.use('/me', userRouter);
 
 viteExpress.listen(app, port, () => {

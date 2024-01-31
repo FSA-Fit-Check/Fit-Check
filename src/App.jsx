@@ -8,6 +8,7 @@ import Navbar from './components/navbar.jsx';
 import {Router, Routes, Route, useNavigate} from 'react-router-dom'
 import Profile from './components/profile.jsx';
 import GarmentUploadForm from './components/garmentUpload.jsx';
+import OutfitUploadForm from './components/outfitUpload.jsx';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/registration" element={<Registration setUserId={handleSetUserId}/>} />
         <Route path="/profile" element={<Profile userId={userId} username={username} logOut={logOut}/>} />
         <Route path="/garmentUpload" element={<GarmentUploadForm />} />
+        <Route path="/outfitUpload" element={<OutfitUploadForm />} />
       </Routes>
       <br />
     </>
