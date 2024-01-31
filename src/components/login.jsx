@@ -35,7 +35,6 @@ const Login = ({ setUserId }) => {
           window.localStorage.setItem('TOKEN', data.token);
           setUserId(data.userId);
           setUsername(data.username);
-          console.log(data.username);
         } else {
           setResponseMessage(`Token not received..`);
         }

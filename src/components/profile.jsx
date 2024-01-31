@@ -8,6 +8,7 @@ const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onren
 
 const Profile = ({ userId, username, logOut }) => {
   const [favorites, setFavorites] = useState([]);
+  const [outfits, setOutfits] = useState([]);
   const [user, setUser] = useState({})
   const [deleteCount, setDeleteCount] = useState(0);
 
@@ -18,6 +19,7 @@ const Profile = ({ userId, username, logOut }) => {
 
   useEffect(() => {
     fetchMe();
+    fetchOutfits();
   }, []); 
 
   
@@ -61,6 +63,16 @@ const Profile = ({ userId, username, logOut }) => {
     }
   };
 
+  const fetchOutfits = async () => {
+    try {
+      const response = await fetch(`${baseURL}/outfits/${userId}`);
+      const result = await response.json();
+      setOutfits(result);
+    } catch (error) {
+      console.error('Error fetching outfits:', error);
+    }
+  }
+
   const deleteFavoritedItem = async(garment) => {
     try {
       const response = await fetch(
@@ -95,6 +107,20 @@ const Profile = ({ userId, username, logOut }) => {
 
       <Link to="/garmentUpload">Upload Garments for Your Wardrobe Here!</Link>
 
+      <section className="panel">
+        <h2>Your Outfits</h2>
+
+        <section>
+        {outfits.map((outfit) => (
+        <div key={`Outfit #${outfit.id}`}>
+          <h2>{outfit.name}</h2>
+        </div>
+        ))}
+        </section>
+
+        <Link to="/outfitUpload">Create a new outfit here!</Link>
+      </section>
+
       <div>
         <h2>Your Favorite Clothing Items</h2>
         {favorites.length > 0 ? (
@@ -111,6 +137,16 @@ const Profile = ({ userId, username, logOut }) => {
                 className='garment-specification'
                 >
                   <p>{favorite.clothingItem.description}</p>
+                  <button
+                  onClick={() => deleteFavoritedItem(favorite)}
+                  >Remove from favorites</button>
+                  
+                  <select
+                    name="Outfit"
+                    value="?"
+                    onChange={() => {}}>
+                    <option value={null}>Choose One</option>
+                  </select>
                 </div>
               </div>
             ))}
