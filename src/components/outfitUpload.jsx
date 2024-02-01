@@ -38,6 +38,14 @@ const OutfitUploadForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Return out of the submit function if any values are empty.
+    for (const key in formInput) {
+      if (formInput[key] === ``) {
+        setResponseMessage(`All fields must not be empty.`)
+        return;
+      }
+    }
+
     try {
       const response = await fetch(`${baseURL}/outfitUpload/${user.userId}`, {
         method: "POST",
@@ -150,6 +158,8 @@ const OutfitUploadForm = () => {
 
       <button type="submit">Create outfit</button>
     </form>
+
+    {responseMessage && <p>{responseMessage}</p>}
   </div>);
 };
 

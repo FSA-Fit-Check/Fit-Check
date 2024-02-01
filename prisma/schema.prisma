@@ -38,7 +38,7 @@ model User {
 
 model Outfit {
   id                    Int                    @id @default(autoincrement())
-  user_id               Int?                   @unique
+  user_id               Int?                   
   name                  String
   weather_compatability String
   occasion              String
