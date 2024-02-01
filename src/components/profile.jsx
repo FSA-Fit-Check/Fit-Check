@@ -73,6 +73,32 @@ const Profile = ({ userId, username, logOut }) => {
     }
   }
 
+  const addGarmentToOutfit = async (garment, outfitName) => {
+    try {
+      const response = await fetch(
+        `${baseURL}/outfits/${user.userId}/${outfitName}`, 
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            clothingItemID: garment.id,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error('Error adding garment to outfit:', error);
+    }
+  }
+
   const deleteFavoritedItem = async(garment) => {
     try {
       const response = await fetch(
@@ -143,9 +169,16 @@ const Profile = ({ userId, username, logOut }) => {
                   
                   <select
                     name="Outfit"
-                    value="?"
-                    onChange={() => {}}>
-                    <option value={null}>Choose One</option>
+                    value={``}
+                    onChange={(e) => {addGarmentToOutfit(favorite, e.target.value)}}>
+                    <option value={``}>Add To Outfit</option>
+
+                    {/* Adds an option tag for each outfit from the user. */}
+                    {
+                      outfits.map((outfit) => (
+                        <option key={`Outfit ${outfit}`}>{outfit.name}</option>
+                      ))
+                    }
                   </select>
                 </div>
               </div>
