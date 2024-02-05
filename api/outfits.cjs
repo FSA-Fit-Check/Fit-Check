@@ -29,12 +29,13 @@ router.get(`/:userId/:outfitName`, async(req, res) => {
   const outfitName = req.params.outfitName;
   
   try {
+    // findUnique was giving errors, that's why findMany was used.
     const outfitsArray = await prisma.outfit.findMany({
       where: {
         user_id: parseInt(userId),
         name: outfitName,
       }
-    });
+    })
     if (outfitsArray.length === 0) {
       res.status(404).json({ 
         message: "Outfit of that name doesn't exist.", 
@@ -42,7 +43,16 @@ router.get(`/:userId/:outfitName`, async(req, res) => {
       })
     }
 
-    res.send(outfitsArray[0].Outfit_Clothing_item);
+    // Get the ID of the outfit.
+    const outfitID = parseInt(outfitsArray[0].id);
+
+    const itemsInOutfit = await prisma.outfit_Clothing_item.findMany({
+      where: {
+        outfit_id: outfitID,
+      }
+    });
+
+    res.send(itemsInOutfit);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

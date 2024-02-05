@@ -1,6 +1,6 @@
 // profile.jsx
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import '../output.css';
 const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onrender.com` : `http://localhost:3000`;
@@ -9,17 +9,22 @@ const baseURL = process.env.NODE_ENV === `production` ? `https://fit-check.onren
 const Profile = ({ userId, username, logOut }) => {
   const [favorites, setFavorites] = useState([]);
   const [outfits, setOutfits] = useState([]);
+  const [outfitsWithItems, setOutfitsWithItems] = useState({});
   const [user, setUser] = useState({})
-  const [deleteCount, setDeleteCount] = useState(0);
+  const [refreshCount, setRefreshCount] = useState(0);
+
+  // forceUpdate can be called to make the component re-render.
+  const [_, forceUpdate] = useReducer(x => x + 1, 0);
 
   useEffect(() => {
     // Fetch and set user's favorites
     fetchFavorites();
-  }, [userId, deleteCount]); // re-fetch when the userId changes, or if you delete something
+    // Fetch and set user's outfits
+    fetchOutfits();
+  }, [userId, refreshCount]); // re-fetch when the userId changes, or when refreshCount is altered
 
   useEffect(() => {
     fetchMe();
-    fetchOutfits();
   }, []); 
 
   
@@ -68,6 +73,25 @@ const Profile = ({ userId, username, logOut }) => {
       const response = await fetch(`${baseURL}/outfits/${userId}`);
       const result = await response.json();
       setOutfits(result);
+
+      const outfitsWithItems = {};
+      result.map(async(outfit) => {
+        const items = await fetchItemsFromOutfit(outfit.name)
+        outfitsWithItems[outfit.name] = items;
+      })
+
+      setOutfitsWithItems(outfitsWithItems);
+    } catch (error) {
+      console.error('Error fetching outfits:', error);
+    }
+  }
+
+  const fetchItemsFromOutfit = async (outfitName) => {
+    try {
+      const response = await fetch(`${baseURL}/outfits/${userId}/${outfitName}`);
+      const result = await response.json();
+
+      return result;
     } catch (error) {
       console.error('Error fetching outfits:', error);
     }
@@ -93,7 +117,7 @@ const Profile = ({ userId, username, logOut }) => {
       }
 
       const result = await response.json();
-      console.log(result);
+      setRefreshCount(refreshCount + 1);
     } catch (error) {
       console.error('Error adding garment to outfit:', error);
     }
@@ -116,7 +140,7 @@ const Profile = ({ userId, username, logOut }) => {
       const result = await response.json();
 
       if (response.ok) {
-        setDeleteCount(deleteCount - 1);
+        setRefreshCount(refreshCount + 1);
       }
     } catch (error) {
       console.error('Error deleting from favorites:', error);
@@ -136,10 +160,36 @@ const Profile = ({ userId, username, logOut }) => {
       <section className="panel">
         <h2>Your Outfits</h2>
 
+        {
+          outfits.length > 0 ? (
+            <button
+            onClick={() => forceUpdate()}>
+              Show items
+            </button>
+          ) : (
+            <p>No outfits yet.</p>
+          )
+        }
+
         <section>
         {outfits.map((outfit) => (
-        <div key={`Outfit #${outfit.id}`}>
-          <h2>{outfit.name}</h2>
+        <div key={`Outfit ${outfit.name}`}>
+          <h2><strong>{outfit.name}</strong></h2>
+
+          <section>
+          {
+            outfitsWithItems[outfit.name] !== undefined ? (
+              outfitsWithItems[outfit.name].map((item) => (
+                <p 
+                key={`Item ${item.clothing_id}, ID ${item.id}`}
+                >
+                  Garment {item.clothing_id}
+                </p>
+              ))
+            ) : (
+            <p></p>
+          )}
+          </section>
         </div>
         ))}
         </section>
@@ -150,7 +200,7 @@ const Profile = ({ userId, username, logOut }) => {
       <div>
         <h2>Your Favorite Clothing Items</h2>
         {favorites.length > 0 ? (
-          <section className='garment-grid'>
+          <section className='panel'>
             {favorites.map((favorite) => (
               <div key={favorite.id} className='split-container'>
                 <img 
@@ -167,19 +217,25 @@ const Profile = ({ userId, username, logOut }) => {
                   onClick={() => deleteFavoritedItem(favorite)}
                   >Remove from favorites</button>
                   
-                  <select
-                    name="Outfit"
-                    value={``}
-                    onChange={(e) => {addGarmentToOutfit(favorite, e.target.value)}}>
-                    <option value={``}>Add To Outfit</option>
+                  {
+                    outfits.length > 0 ? (
+                      <select
+                        name="Outfit"
+                        value={``}
+                        onChange={(e) => {addGarmentToOutfit(favorite, e.target.value)}}>
+                        <option value={``}>Add To Outfit</option>
 
-                    {/* Adds an option tag for each outfit from the user. */}
-                    {
-                      outfits.map((outfit) => (
-                        <option key={`Outfit ${outfit}`}>{outfit.name}</option>
-                      ))
-                    }
-                  </select>
+                        {/* Adds an option tag for each outfit from the user. */}
+                        {
+                          outfits.map((outfit) => (
+                            <option key={`Outfit ${outfit.name}`}>{outfit.name}</option>
+                          ))
+                        }
+                      </select>
+                    ) : (
+                      <></>
+                    )
+                  }
                 </div>
               </div>
             ))}
