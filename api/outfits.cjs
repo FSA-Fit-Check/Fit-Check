@@ -52,7 +52,17 @@ router.get(`/:userId/:outfitName`, async(req, res) => {
       }
     });
 
-    res.send(itemsInOutfit);
+    const garments = [];
+    for (const item of itemsInOutfit) {
+      const garment = await prisma.clothing_Item.findUnique({
+        where: {
+          id: item.clothing_id,
+        }
+      })
+      if (garment) garments.push(garment);
+    };
+
+    res.send(garments);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

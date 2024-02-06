@@ -79,6 +79,15 @@
   }
 }
 
+.tiny-grid {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.tiny-garment-img {
+  max-width: 64px;
+  max-height: 64px;
+  margin: 24px;
+}
 
 .split-container {
   display: flex;

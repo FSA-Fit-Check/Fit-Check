@@ -107,7 +107,7 @@ const Profile = ({ userId, username, logOut }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            clothingItemID: garment.id,
+            clothingItemID: garment.clothingItemId,
           }),
         }
       );
@@ -117,6 +117,7 @@ const Profile = ({ userId, username, logOut }) => {
       }
 
       const result = await response.json();
+      
       setRefreshCount(refreshCount + 1);
     } catch (error) {
       console.error('Error adding garment to outfit:', error);
@@ -176,15 +177,16 @@ const Profile = ({ userId, username, logOut }) => {
         <div key={`Outfit ${outfit.name}`}>
           <h2><strong>{outfit.name}</strong></h2>
 
-          <section>
+          <section className="tiny-grid">
           {
             outfitsWithItems[outfit.name] !== undefined ? (
               outfitsWithItems[outfit.name].map((item) => (
-                <p 
+                <img 
                 key={`Item ${item.clothing_id}, ID ${item.id}`}
-                >
-                  Garment {item.clothing_id}
-                </p>
+                className="tiny-garment-img"
+                src={item.img_url}
+                alt={item.description}
+                />
               ))
             ) : (
             <p></p>
