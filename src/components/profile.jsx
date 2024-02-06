@@ -117,7 +117,7 @@ const Profile = ({ userId, username, logOut }) => {
       }
 
       const result = await response.json();
-      console.log(garment, result)
+      
       setRefreshCount(refreshCount + 1);
     } catch (error) {
       console.error('Error adding garment to outfit:', error);
